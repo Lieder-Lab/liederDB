@@ -5,7 +5,7 @@ Optimized MySQL, support middle layer storage, more modular syntax and more opti
 All elements save as String in kernel, so default element type is String.
 
 # Grammar regulation(Different from MySQL):
-  # <ARRAY_NAME> means <1st, 2nd, 3rd, ...>
+  <ARRAY_NAME> means <1st, 2nd, 3rd, ...>
 
 
 # Create new table with initialize columns:
