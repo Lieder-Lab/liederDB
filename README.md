@@ -7,6 +7,7 @@ All elements save as String in kernel, so default element type is String.
 ### Grammar regulation(Different from MySQL):
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
 * There should be a ';' between every two commends to separate them;
+* '' and "" are same for liederDB;
 
 
 
@@ -18,6 +19,9 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <
 >create Apple set <AppleName, AppleCount, AppleColor>;
 >
 >You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
+
+>create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;
+>You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with default values '', 0 and ''.
 * tips
 >[type <COLUMNS_TYPES>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
