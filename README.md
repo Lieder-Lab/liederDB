@@ -18,8 +18,6 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <
 >create Apple set <AppleName, AppleCount, AppleColor>;
 >
 >You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
->
->create Apple set <AppleName, AppleCount, AppleColor>;
 * tips
 >[type <COLUMNS_TYPES>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
