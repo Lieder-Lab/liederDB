@@ -4,7 +4,7 @@ A new relational database improved from MySQL.
 Optimized MySQL, support middle layer modul storage, faster, more modular syntax and more optimized operation.
 All elements save as String in kernel, so default element type is String.
 
-## Grammar regulation(Different from MySQL):
+### Grammar regulation(Different from MySQL):
   <ARRAY_NAME> means <1st, 2nd, 3rd, ...>
 
 
