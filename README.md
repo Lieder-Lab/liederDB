@@ -17,4 +17,5 @@ All elements save as String in kernel, so default element type is String.
 > >You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 >*  $tips
 > >[type <COLUMNS_TYPE>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length, 
+
 > >[defaultValue <COLUMNS_defaultValue>] is default value of every column when you insert a new row without assignment.
