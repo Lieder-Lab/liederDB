@@ -8,7 +8,8 @@ All elements save as String in kernel, so default element type is String.
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
 * There should be a ';' between every two commends to separate them;
 * '' and "" are same for liederDB;
-* To be assigned elements and corresponding column names should packaged into <>, same as <column_name1, column_name2>, <column_value1, column_value2>.
+* To be assigned elements and corresponding column names should packaged into separated __key-value pairs <>__, same as <column_name1, column_name2>, <column_value1, column_value2>.
+* __No nesting allowed in <> pair.
 
 
 ## Create new table with initialize columns:
