@@ -5,7 +5,9 @@ Optimized MySQL, support middle layer modul storage, faster, more modular syntax
 All elements save as String in kernel, so default element type is String.
 
 ### Grammar regulation(Different from MySQL):
-  <ARRAY_NAME> means <1st, 2nd, 3rd, ...>
+* <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
+  
+* There should be a ';' after each commend;
 
 
 
@@ -17,6 +19,8 @@ create TABLE_NAME set <COLUMNS_NAME> [type <COLUMNS_TYPE>] [defaultValue <COLUMN
 >create Apple set <AppleName, AppleCount, AppleColor>;
 >
 >You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
+>
+>create Apple set <AppleName, AppleCount, AppleColor>;
 * tips
 >[type <COLUMNS_TYPE>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
