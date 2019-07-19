@@ -12,7 +12,7 @@ All elements save as String in kernel, so default element type is String.
 
 ## Create new table with initialize columns:
 
-_create_ _TABLE_NAME_ _set_ _<COLUMNS_NAME>_ [type <COLUMNS_TYPE>] [defaultValue <COLUMNS_defaultValue>];
+___create TABLE_NAME set <COLUMNS_NAME>__ [type <COLUMNS_TYPE>] [defaultValue <COLUMNS_defaultValue>];_
 
 * e.g.
 >create Apple set <AppleName, AppleCount, AppleColor>;
