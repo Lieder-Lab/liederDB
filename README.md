@@ -6,14 +6,13 @@ All elements save as String in kernel, so default element type is String.
 
 ### Grammar regulation(Different from MySQL):
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
-  
-* There should be a ';' after each commend;
+* There should be a ';' between every two commends to separate them;
 
 
 
 ## Create new table with initialize columns:
 
-create TABLE_NAME set <COLUMNS_NAME> [type <COLUMNS_TYPE>] [defaultValue <COLUMNS_defaultValue>];
+_create_ _TABLE_NAME_ _set_ _<COLUMNS_NAME>_ [type <COLUMNS_TYPE>] [defaultValue <COLUMNS_defaultValue>];
 
 * e.g.
 >create Apple set <AppleName, AppleCount, AppleColor>;
@@ -25,3 +24,8 @@ create TABLE_NAME set <COLUMNS_NAME> [type <COLUMNS_TYPE>] [defaultValue <COLUMN
 >[type <COLUMNS_TYPE>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
 >[defaultValue <COLUMNS_defaultValue>] is default value of every column when you insert a new row without assignment.
+
+
+## Insert a new row into exsited table:
+
+insert
