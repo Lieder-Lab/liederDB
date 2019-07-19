@@ -12,7 +12,7 @@ All elements save as String in kernel, so default element type is String.
 
 ## Create new table with initialize columns:
 
-__create TABLE_NAME set <COLUMNS_NAME>__ [type <COLUMNS_TYPE>] [defaultValue <COLUMNS_defaultValue>];
+__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <COLUMNS_defaultValues>];
 
 * e.g.
 >create Apple set <AppleName, AppleCount, AppleColor>;
@@ -21,11 +21,16 @@ __create TABLE_NAME set <COLUMNS_NAME>__ [type <COLUMNS_TYPE>] [defaultValue <CO
 >
 >create Apple set <AppleName, AppleCount, AppleColor>;
 * tips
->[type <COLUMNS_TYPE>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
+>[type <COLUMNS_TYPES>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
->[defaultValue <COLUMNS_defaultValue>] is default value of every column when you insert a new row without assignment.
+>[defaultValue <COLUMNS_defaultValues>] is default value of every column when you insert a new row without assignment.
 
 
 ## Insert a new row into exsited table:
 
-insert
+__insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
+
+* e.g.
+>insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
+>
+>You would have a table with a row <Red Fuji, 5, red>.
