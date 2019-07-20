@@ -9,6 +9,7 @@ All elements save as String in kernel, so default element type is String.
 * There should be a ';' between every two commends to separate them;
 * '' and "" are same for liederDB;
 * To be assigned elements and corresponding column names should packaged into __separated key-value pairs <>__, same as <column_name1, column_name2>, <column_value1, column_value2>.
+* Keywords are not case sensitive.
 * __No nesting allowed in <> pair.__
 
 
