@@ -16,9 +16,9 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * __No nesting allowed in <> pair.__
 
 
-## Create new table with initialize columns:
+## Create a new table with initialize columns:
 
-__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <COLUMNS_defaultValues>];
+__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];
 
 * e.g.
 >_create Apple set <AppleName, AppleCount, AppleColor>;_
@@ -31,7 +31,7 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <
 * tips
 >[type <COLUMNS_TYPES>] means you can assign every column with corresponding type, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
->[defaultValue <COLUMNS_defaultValues>] is default value of every column when you insert a new row without assignment.
+>[default <COLUMNS_defaultValues>] is default value of every column when you insert a new row without input some columns.
 
 
 ## Insert a new row into exsited table:
@@ -41,4 +41,4 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 * e.g.
 >insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
 >
->You would have a table with a row <Red Fuji, 5, red>.
+>You would have inserted a new row <Red Fuji, 5, red>.
