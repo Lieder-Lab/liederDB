@@ -1,8 +1,8 @@
 # liederDB
 A new relational database improved from MySQL.
 
-Optimized MySQL, support middle layer modul storage, faster, more modular syntax and more optimized operation.
-All elements save as String in kernel, so default element type is String.
+Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
+
 
 ### Grammar regulation:
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
@@ -12,6 +12,7 @@ All elements save as String in kernel, so default element type is String.
 * Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__, same as <column_name1, column_name2>, <column_value1, column_value2>;
 * The brackets () only indicate 
 * Keywords are not case sensitive;
+* All elements save as String in kernel, so default element type is String.
 * __No nesting allowed in <> pair.__
 
 
@@ -20,14 +21,15 @@ All elements save as String in kernel, so default element type is String.
 __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [defaultValue <COLUMNS_defaultValues>];
 
 * e.g.
->create Apple set <AppleName, AppleCount, AppleColor>;
+>_create Apple set <AppleName, AppleCount, AppleColor>;_
 >
->You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
+>You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 
->create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;
->You would create a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with default values '', 0 and ''.
+>_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+>You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
+
 * tips
->[type <COLUMNS_TYPES>] means you can assign every column with corresponding types, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
+>[type <COLUMNS_TYPES>] means you can assign every column with corresponding type, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
 >[defaultValue <COLUMNS_defaultValues>] is default value of every column when you insert a new row without assignment.
 
