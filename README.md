@@ -9,7 +9,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * There should be a ';' between every two commends to separate them;
 * string type element don't need be enclosed in quotation marks ('' or "");
 * '' and "" are same for liederDB;
-* Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__, same as <column_name1, column_name2>, <column_value1, column_value2>;
+* Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__ before 'where' statement, same as <column_name1, column_name2>, <column_value1, column_value2>;
 * The brackets () only indicate function parameter or a whole table expression (there must be a table alias behind the table expression, like this: (TABLE_CREATE_EXPRESSION) TABLE_ALIAS) (reference MySQL).
 * Keywords are not case sensitive;
 * All elements save as String in kernel, so default element type is String.
@@ -42,3 +42,11 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 >insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
 >
 >You would have inserted a new row <Red Fuji, 5, red>.
+
+## update some exsited element in table:
+
+__update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
+
+* e.g.
+>_update Apple set <color> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
+>Now you updated the color value where AppleCount = 3 and AppleName = Red Fuji;
