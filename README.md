@@ -27,6 +27,7 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 
 >_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+>
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
 
 * tips
@@ -50,7 +51,9 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 
 * e.g.
 >_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
+>
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
+>
 >CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
 
 ## delete some exsited rows in table:
@@ -59,8 +62,11 @@ __delete TABLE_NAME where CONDITIONS;__
 
 * e.g.
 >_delete Apple where AppleCount = 3 and AppleName = Red Fuji;_
+>
 >Delete statement just means remove some rows from exsited table, or clear the table, not remove whole table(remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
+>
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji;
+>
 >Where statement is not required, commend without where statement means clear all elements of the table.
 
 ## remove an exsited table:
@@ -68,7 +74,8 @@ __delete TABLE_NAME where CONDITIONS;__
 __remove TABLE_NAME;__
 
 * e.g.
->_remove Apple;__
+>_remove Apple;_
+>
 >You have removed whole table named Apple.
 
 ## select data from some tables:
@@ -77,9 +84,13 @@ __select * from Apple where CONDITIONS;__
 __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 
 * e.g.
+>
 >_select * from Apple;_
+>
 >_select <AppleColor, AppleCount> from Apple where AppleCount = 3;_
+>
 >Now you got data of Apple as you want to;
+>
 >Where statement is not required.
 
 ## where statement:
