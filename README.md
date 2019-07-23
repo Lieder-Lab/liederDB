@@ -84,10 +84,21 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 ## where statement:
 ### and / or
 
-#### and
-__CONDITIONS_1 and CONDITIONS_2__
+>#### and
+>__CONDITIONS_1 and CONDITIONS_2__
+>
+>>*e.g.
+>>_AppleCount = 1 and AppleColor = red and ..._
+>>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
+
+
+
+>#### or
+>__CONDITIONS_1 or CONDITIONS_2__
 
 *e.g.
->_AppleCount = 1 and AppleColor = red and ..._
->'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously
+>_AppleCount = 1 or AppleColor = red and ..._
+>'or' sub statement return the result meet __CONDITIONS_1 or CONDITIONS_2__;
+
+
 
