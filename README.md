@@ -21,7 +21,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 
 __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];
 
-* e.g.
+>* e.g.
 >_create Apple set <AppleName, AppleCount, AppleColor>;_
 >
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
@@ -40,9 +40,9 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 
 __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 
-* e.g.
+>* e.g.
 >insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
->
+
 >You would have inserted a new row <Red Fuji, 5, red>.
 
 ## update some exsited element in table:
