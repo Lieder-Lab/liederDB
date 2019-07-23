@@ -81,3 +81,11 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >Now you got data of Apple as you want to;
 >Where statement is not required.
 
+## where statement:
+### and
+__CONDITIONS_1 and CONDITIONS_2__
+
+*e.g.
+>_AppleCount = 1 and AppleColor = red and ..._
+>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__
+
