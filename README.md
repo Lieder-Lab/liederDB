@@ -82,10 +82,12 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >Where statement is not required.
 
 ## where statement:
-### and
+### and / or
+
+#### and
 __CONDITIONS_1 and CONDITIONS_2__
 
 *e.g.
 >_AppleCount = 1 and AppleColor = red and ..._
->'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__
+>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously
 
