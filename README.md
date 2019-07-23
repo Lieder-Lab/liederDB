@@ -168,9 +168,11 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>This statement works like 'like' statement shown below, about more please see the 'like' statement.
 >
 >#### TABLE statement
->__left_element in ('select' statement(single column)) SELECTED_TABLE_ALIAS
+>__left_element in ('select' statement(single column)) SELECTED_TABLE_ALIAS__
 >
->__left_element in ('select' statement) SELECTED_TABLE_ALIAS[SINGLE_COLUMN_NAME]
+>or
+>
+>__left_element in ('select' statement) SELECTED_TABLE_ALIAS[SINGLE_COLUMN_NAME]__
 >
 >* e.g.
 >>
