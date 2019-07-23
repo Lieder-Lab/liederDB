@@ -203,5 +203,5 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >* signs of like_expression
 >> _ 
 >>
->> _'_' represents an arbitrary character_
+>> _'___' represents an arbitrary character_
 
