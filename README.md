@@ -126,6 +126,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 ### LOGICAL_OPERATORS:  =    ==    >    <    >=    <=    !=
 
 >#### __=    ==    !=__
+>__object_1 LOGICAL_OPERATORS object_2__
 >
 >* e.g.
 >>
@@ -133,13 +134,14 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>_AppleCount != 1_
 >
->>'=' and '==' are same for liederDB, check whether operating objects are equal;
+>>'=' and '==' are same for liederDB, check whether object_1 and object_2 are equal;
 >>
->>'!=' checks whether operating objects are not equal;
+>>'!=' checks whether object_1 and object_2 are not equal;
 >>
 >>'=', '==' and '!=' can be used for all types of objects;
 >
 >#### __>    <    >=    <=__
+>__number_1 LOGICAL_OPERATORS number_2__
 >
 >* e.g.
 >>_AppleCount > 1_
@@ -153,16 +155,22 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 ### in
 
 >#### [] statement
+>__left_element in [element_1, element_2, element_3,  ...]__
 >
 >* e.g.
 >>
 >>_AppleCount in [1,2,3]_
 >>
->>[] means an array, 'in[]' return whether left element appered in this array;
+>>[] means an array, elements in this array should be separated by ',';
 >>
->>This function is like 'like' statement shown below, about more please see the 'like' statement.
+>>'in[]' return whether left_element appered in the right array;
+>>
+>>This statement works like 'like' statement shown below, about more please see the 'like' statement.
 >
 >#### TABLE statement
+>__left_element in ('select' statement(single column)) SELECTED_TABLE_ALIAS
+>
+>__left_element in ('select' statement) SELECTED_TABLE_ALIAS[SINGLE_COLUMN_NAME]
 >
 >* e.g.
 >>
@@ -179,5 +187,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >> TABLE statement means there must be a selected or exsited table followed behind 'in';
 >>
 >> What should noticed that is this selected or exsited table must have only one column, or you can declare one column from the table contains more than one columns like (2) or (3);
+>>
+>> If use 'select' statement in TABLE statement, brackets '()' and table alias are mandatory;
 >>
 >> TABLE statement return whether left element appered in the column of the table.
