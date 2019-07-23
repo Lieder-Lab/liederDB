@@ -153,10 +153,8 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>However, it should be noted that these symbols can only be used when both sides are all numbers, otherwise the kernel will report an error.
 
 ### in
-
-
 >#### TABLE statement
->__left_element in ('select' statement(single column)) SELECTED_TABLE_ALIAS__
+>__left_element in ('select' statement_single_column) SELECTED_TABLE_ALIAS__
 >
 >or
 >
@@ -180,7 +178,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >> TABLE statement means there must be a selected or exsited table followed behind 'in';
 >>
->> What should noticed that is this selected or exsited table must have only one column, or you can declare one column from the table contains more than one columns like (2) or (3);
+>> What should noticed is __this statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column from the table which contains more than one columns through declaring the column name after table name and packaged by brackets '[]' like (2) or (3);
 >>
 >> If use 'select' statement in TABLE statement, brackets '()' and table alias are mandatory;
 >>
@@ -197,4 +195,5 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>'in[]' return whether left_element appered in the right array;
 >>
 >>This statement works like 'like' statement shown below, about more please see the 'like' statement.
->
+
+
