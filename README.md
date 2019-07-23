@@ -60,5 +60,5 @@ __delete TABLE_NAME where CONDITIONS;__
 >_delete Apple where AppleCount = 3 and AppleName = Red Fuji;_
 >Delete statement just means remove some rows from exsited table, or clear the table, not remove whole table. For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji;
->CONDITIONS after 'where' is where statement, specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
+>Where statement is not required, commend without where statement means clear all elements of the table.
 
