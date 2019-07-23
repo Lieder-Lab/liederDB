@@ -118,6 +118,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>'=' and '==' are same for liederDB, check whether operating objects are equal;
 >>
 >>'!=' checks whether operating objects are not equal;
+>>
 >>'=', '==' and '!=' can use for all types of objects;
 >
 >#### __>  /  <  /  >=  /  <=__
@@ -129,4 +130,5 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>_AppleCount <= 1_
 >>
 >>The role of these symbols is the same as their meaning in mathematics;
+>>
 >>However, it should be noted that these symbols can only be used when both sides are all numbers, otherwise the kernel will report an error.
