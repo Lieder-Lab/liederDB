@@ -123,7 +123,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >_The 'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
-### logical operators:  =    ==    >    <    >=    <=    !=
+### LOGICAL_OPERATORS:  =    ==    >    <    >=    <=    !=
 
 >#### __=    ==    !=__
 >
