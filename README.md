@@ -110,7 +110,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>_AppleCount = 1 and AppleColor = red and/or ..._
 >
->>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
+>>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
 >#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
@@ -119,7 +119,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>_AppleCount = 1 or AppleColor = red and/or ..._
 >
->>'or' sub statement return the result meet __CONDITIONS_1 or CONDITIONS_2__;
+>>'or' sub statement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
 >_The 'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
@@ -182,7 +182,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >> If use 'select' statement in TABLE statement, brackets '()' and table alias are mandatory;
 >>
->> TABLE statement return whether left element appered in the column of the table.
+>> TABLE statement returns whether the left element appered in the column of the table.
 >#### [] statement
 >__left_element in [element_1, element_2, element_3,  ...]__
 >
@@ -192,7 +192,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>[] means an array, elements in this array should be separated by ',';
 >>
->>'in[]' return whether left_element appered in the right array;
+>>'in[]' returns whether the left_element appered in the right array;
 >>
 >>This statement works like 'like' statement shown below, about more please see the 'like' statement.
 
@@ -219,6 +219,6 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>[] ( / [^ ]) means an array, contain some like_expressions;
 >>
->>'[]' statement in 'like' statement return whether the left_element meet any like_expression in [] array;
+>>'[]' statement in 'like' statement returns whether the left_element meet any like_expression in the [] array;
 >>
->>'[^ ]' statement in 'like' statement return true if the left_element not meet any like_expression in [] array;
+>>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
