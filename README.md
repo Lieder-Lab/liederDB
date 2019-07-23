@@ -162,7 +162,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >__left_element in ('select' statement) SELECTED_TABLE_ALIAS[SINGLE_COLUMN_NAME]__
 >
-or
+>or
 >
 >__left_element in EXSITED_TABLE[SINGLE_COLUMN_NAME]__
 >
