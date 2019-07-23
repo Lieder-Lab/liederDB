@@ -196,4 +196,12 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>This statement works like 'like' statement shown below, about more please see the 'like' statement.
 
+### like
+>#### SINGLE_ELEMENT statement
+>__left_element like like_expression
+>
+>* signs of like_expression
+>> _ 
+>>
+>> _'_' represents an arbitrary character_
 
