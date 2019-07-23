@@ -99,5 +99,5 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>_AppleCount = 1 or AppleColor = red and/or ..._
 >>'or' sub statement return the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
->'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process the 'and' statement first and then process the 'or' one later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already.
+>_The 'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process the 'and' statement first and then process the 'or' one later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
