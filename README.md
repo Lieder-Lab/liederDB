@@ -85,7 +85,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 ## where statement:
 ### and / or
 
->#### and
+>#### __and__
 >__CONDITIONS_1 and CONDITIONS_2__
 >
 >>* e.g.
@@ -94,7 +94,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
->#### or
+>#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
 >
 >>* e.g.
