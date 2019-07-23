@@ -156,4 +156,26 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
+>>_AppleCount in [1,2,3]_
 >>
+>>[] means an array, 'in[]' return whether left element appered in this array.
+>>
+>>This function is like 'like' statement shown below, about more please see the 'like' statement.
+>
+>#### TABLE statement
+>
+>* e.g.
+>>
+>>_AppleCount in (select count from CountList) countTable_ (1)
+>>
+>>or
+>>
+>>_AppleCount in (select * from CountList) countTable[count]_ (2)
+>>
+>>or
+>>
+>>_AppleCount in CountList[count]_ (3)
+>>
+>> TABLE statement means there must be a selected or exsited table followed behind 'in';
+>>
+>> What should noticed that is this selected or exsited table must have only one column, or you can declare one column from the table contains more than one columns like (2) or (3);
