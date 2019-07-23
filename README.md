@@ -13,6 +13,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * The brackets () only indicate function parameter or a whole table expression (there must be a table alias behind the table expression, like this: (TABLE_CREATE_EXPRESSION) TABLE_ALIAS) (reference MySQL).
 * Keywords are not case sensitive;
 * All elements save as String in kernel, so default element type is String.
+* Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
 * __No nesting allowed in <> pair.__
 
 
@@ -88,7 +89,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >__CONDITIONS_1 and CONDITIONS_2__
 >
 >>*e.g.
->>_AppleCount = 1 and AppleColor = red and ..._
+>>_AppleCount = 1 and AppleColor = red and/or ..._
 >>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 
 
@@ -97,8 +98,8 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >__CONDITIONS_1 or CONDITIONS_2__
 >
 >>*e.g.
->>_AppleCount = 1 or AppleColor = red and ..._
+>>_AppleCount = 1 or AppleColor = red and/or ..._
 >>'or' sub statement return the result meet __CONDITIONS_1 or CONDITIONS_2__;
 
-
+>'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process the 'and' statement first and then process the 'or' one later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already.
 
