@@ -201,7 +201,9 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >__left_element like like_expression
 >
 >* signs of like_expression
->> _ 
+>> 
 >>
->> _'___' represents an arbitrary character_
+>> _'___' represents an arbitrary character_;
+>>
+>> '%' represents any number(including 0) of arbitrary characters;
 
