@@ -22,12 +22,15 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];
 
 >* e.g.
->_create Apple set <AppleName, AppleCount, AppleColor>;_
 >
+>_create Apple set <AppleName, AppleCount, AppleColor>;_
+
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 
->_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+>* e.g.
 >
+>_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
 
 * tips
@@ -41,6 +44,7 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 
 >* e.g.
+>
 >insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
 
 >You would have inserted a new row <Red Fuji, 5, red>.
@@ -50,8 +54,9 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 
 * e.g.
->_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
 >
+>_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
+
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
 >CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
@@ -61,8 +66,9 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 __delete TABLE_NAME where CONDITIONS;__
 
 * e.g.
->_delete Apple where AppleCount = 3 and AppleName = Red Fuji;_
 >
+>_delete Apple where AppleCount = 3 and AppleName = Red Fuji;_
+
 >Delete statement just means remove some rows from exsited table, or clear the table, not remove whole table(remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji;
@@ -74,8 +80,9 @@ __delete TABLE_NAME where CONDITIONS;__
 __remove TABLE_NAME;__
 
 * e.g.
->_remove Apple;_
 >
+>_remove Apple;_
+
 >You have removed whole table named Apple.
 
 ## select data from some tables:
@@ -88,7 +95,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >_select * from Apple;_
 >
 >_select <AppleColor, AppleCount> from Apple where AppleCount = 3;_
->
+
 >Now you got data of Apple as you want to;
 >
 >Where statement is not required.
@@ -99,16 +106,16 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >#### __and__
 >__CONDITIONS_1 and CONDITIONS_2__
 >
->>* e.g.
+>* e.g.
 >>
 >>_AppleCount = 1 and AppleColor = red and/or ..._
->>
+>
 >>'and' sub statement return the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
 >#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
 >
->>* e.g.
+>* e.g.
 >>
 >>_AppleCount = 1 or AppleColor = red and/or ..._
 >
@@ -116,11 +123,11 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >_The 'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
-### logical operators:  =  /  ==  /  >  /  <  /  >=  /  <=  /  !=
+### logical operators:  =    ==    >    <    >=    <=    !=
 
->#### __=  /  ==  /  !=__
+>#### __=    ==    !=__
 >
->>* e.g.
+>* e.g.
 >>
 >>_AppleCount = 1_
 >>
@@ -132,9 +139,9 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >>
 >>'=', '==' and '!=' can use for all types of objects;
 >
->#### __>  /  <  /  >=  /  <=__
+>#### __>    <    >=    <=__
 >
->>* e.g.
+>* e.g.
 >>
 >>_AppleCount > 1_
 >>
