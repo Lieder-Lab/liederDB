@@ -154,25 +154,17 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 
 ### in
 
->#### [] statement
->__left_element in [element_1, element_2, element_3,  ...]__
->
->* e.g.
->>
->>_AppleCount in [1,2,3]_
->>
->>[] means an array, elements in this array should be separated by ',';
->>
->>'in[]' return whether left_element appered in the right array;
->>
->>This statement works like 'like' statement shown below, about more please see the 'like' statement.
->
+
 >#### TABLE statement
 >__left_element in ('select' statement(single column)) SELECTED_TABLE_ALIAS__
 >
 >or
 >
 >__left_element in ('select' statement) SELECTED_TABLE_ALIAS[SINGLE_COLUMN_NAME]__
+>
+or
+>
+>__left_element in EXSITED_TABLE[SINGLE_COLUMN_NAME]__
 >
 >* e.g.
 >>
@@ -193,3 +185,16 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >> If use 'select' statement in TABLE statement, brackets '()' and table alias are mandatory;
 >>
 >> TABLE statement return whether left element appered in the column of the table.
+>#### [] statement
+>__left_element in [element_1, element_2, element_3,  ...]__
+>
+>* e.g.
+>>
+>>_AppleCount in [1,2,3]_
+>>
+>>[] means an array, elements in this array should be separated by ',';
+>>
+>>'in[]' return whether left_element appered in the right array;
+>>
+>>This statement works like 'like' statement shown below, about more please see the 'like' statement.
+>
