@@ -201,9 +201,24 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >__left_element like like_expression
 >
 >* signs of like_expression
->> 
 >>
 >> _'___' represents an arbitrary character_;
 >>
 >> '%' represents any number(including 0) of arbitrary characters;
-
+>* e.g.
+>>
+>>_AppleName like R&%d %j_
+>>
+>>Of course, 'Red Fuji' meet this expression.
+>#### [] ( / [^ ]) statement
+>__left_element like [like_expression_1, like_expression_2, ...]/[^like_expression_1, like_expression_2, ...]__
+>
+>* e.g.
+>>
+>>_AppleName like [R%d %j, Re% F%i]_
+>>
+>>[] ( / [^ ]) means an array, contain some like_expressions;
+>>
+>>'[]' statement in 'like' statement return if the left_element meet any like_expression in [] array;
+>>
+>>'[^ ]' statement in 'like' statement return if the left_element not meet any like_expression in [] array;
