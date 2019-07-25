@@ -7,8 +7,8 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 ### Grammar regulation:
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
 * There should be a ';' between every two commends to separate them;
-* You can choose whether string type element should be enclosed in quotation marks ('' or "") or not. If don't use, kernel will trim the spaces at both sides of the element, so if you want to keep those spaces you can packaged whole element into quotation marks;
-* '' and "" are same for liederDB;
+* You can choose whether string type element should be enclosed in quotation marks ('' or "") or not. __If you choose not, kernel will remove all spaces in the element, so if you want to keep them, you can packaged whole element into quotation marks ('' or "")__;
+* Quotation marks '' and "" are same for liederDB;
 * Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__ before 'where' statement, same as <column_name1, column_name2>, <column_value1, column_value2>;
 * The brackets () only indicate function parameter or a whole table expression (there must be a table alias behind the table expression, like this: (TABLE_CREATE_EXPRESSION) TABLE_ALIAS) (reference MySQL).
 * Keywords are not case sensitive;
