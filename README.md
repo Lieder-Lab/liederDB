@@ -16,7 +16,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
 * __No nesting allowed in <> pair.__
 
-
+____
 ## Create a new table with initialize columns:
 
 __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];
@@ -38,7 +38,7 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 >
 >[default <COLUMNS_defaultValues>] is default value of every column when you insert a new row without input some columns.
 
-
+____
 ## Insert a new row into exsited table:
 
 __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
@@ -49,7 +49,8 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
 
 >You would have inserted a new row <Red Fuji, 5, red>.
 
-## update some exsited element in table:
+____
+## Update some exsited element in table:
 
 __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 
@@ -61,7 +62,8 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 >
 >CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
 
-## delete some exsited rows in table:
+____
+## Delete some exsited rows in table:
 
 __delete TABLE_NAME where CONDITIONS;__
 
@@ -75,7 +77,9 @@ __delete TABLE_NAME where CONDITIONS;__
 >
 >Where statement is not required, commend without where statement means clear all elements of the table.
 
-## remove an exsited table:
+____
+## Remove an exsited table:
+
 
 __remove TABLE_NAME;__
 
@@ -85,7 +89,8 @@ __remove TABLE_NAME;__
 
 >You have removed whole table named Apple.
 
-## select data from some tables:
+____
+## Select data from some tables:
 
 __select * from Apple where CONDITIONS;__
 __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
@@ -100,7 +105,8 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >Where statement is not required.
 
-## where statement:
+____
+## Where statement:
 ### and / or
 
 >#### __and__
@@ -108,7 +114,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
->>_AppleCount = 1 and AppleColor = red and/or ..._
+>>_where AppleCount = 1 and AppleColor = red and/or ..._
 >
 >>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
@@ -117,7 +123,7 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
->>_AppleCount = 1 or AppleColor = red and/or ..._
+>>_where AppleCount = 1 or AppleColor = red and/or ..._
 >
 >>'or' sub statement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
@@ -130,9 +136,9 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
->>_AppleCount = 1_
+>>_where AppleCount = 1_
 >>
->>_AppleCount != 1_
+>>_where AppleCount != 1_
 >
 >>'=' and '==' are same for liederDB, check whether object_1 and object_2 are equal;
 >>
@@ -144,9 +150,9 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >__number_1 LOGICAL_OPERATORS number_2__
 >
 >* e.g.
->>_AppleCount > 1_
+>>_where AppleCount > 1_
 >>
->>_AppleCount <= 1_
+>>_where AppleCount <= 1_
 >
 >>The role of these symbols is the same as their meaning in mathematics;
 >>
@@ -166,15 +172,15 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
->>_AppleCount in (select count from CountList) countTable_ (1)
+>>_where AppleCount in (select count from CountList) countTable_ (1)
 >>
 >>or
 >>
->>_AppleCount in (select * from CountList) countTable[count]_ (2)
+>>_where AppleCount in (select * from CountList) countTable[count]_ (2)
 >>
 >>or
 >>
->>_AppleCount in CountList[count]_ (3)
+>>_where AppleCount in CountList[count]_ (3)
 >
 >> TABLE statement means there must be a selected or exsited table followed behind 'in';
 >>
@@ -188,8 +194,8 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >
 >* e.g.
 >>
->>_AppleCount in [1,2,3]_
->>
+>>_where AppleCount in [1,2,3]_
+>
 >>[] means an array, elements in this array should be separated by ',';
 >>
 >>'in[]' returns whether the left_element appered in the right array;
@@ -207,18 +213,29 @@ __select <COLUMNS_NAMES> from Apple where CONDITIONS;__
 >> '%' represents any number(including 0) of arbitrary characters;
 >* e.g.
 >>
->>_AppleName like R&%d %j_
->>
+>>_where AppleName like R&%d %j_
+>
 >>Of course, 'Red Fuji' meet this expression.
 >#### [] ( / [^ ]) statement
 >__left_element like [like_expression_1, like_expression_2, ...]/[^like_expression_1, like_expression_2, ...]__
 >
 >* e.g.
 >>
->>_AppleName like [R%d %j, Re% F%i]_
->>
->>[] ( / [^ ]) means an array, contain some like_expressions;
+>>_where AppleName like [R%d %j, Re% F%i]_
+>
+>>[] ( or [^ ] ) means an array, contain some like_expressions;
 >>
 >>'[]' statement in 'like' statement returns whether the left_element meet any like_expression from the [] array;
 >>
 >>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression from the [] array;
+
+## Setup some features of kernel
+____
+### efficientMode
+__setup efficientMode true__ / __setup efficientMode false__ (detault)
+>The 'efficientMode' used in high-density instruction situations makes kernel try to store data of tables with another thread without main thread. 
+>
+>But what should be awared is that more threads work means more thread overhead, there may not be so particularly desirable performance when the amount of data in a single table is not very huge (such as lease than 1 billion bytes). Of course, due to the binary storage, you can get a very quick storage performance without turning on the 'efficientMode' also.
+>
+>So the 'efficientMode' just recommended opened in huge amount of data and high frequencies operation situation to get a little faster than the regular method.
+
