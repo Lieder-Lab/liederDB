@@ -237,6 +237,8 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 >
 >But what should be awared is that more threads work means more thread overhead, there may not be so particularly desirable performance when the amount of data in a single table is not very huge (such as lease than 1 billion bytes). Of course, due to the binary storage, you can get a very quick storage performance without turning on the 'efficientMode' also.
 >
+>The 'efficientMode' need more memory space, and if memory space is not enough for 'efficientMode', 'efficientMode' while turn off automatically until memory space back to normal.
+>
 >So the 'efficientMode' just recommended opened in huge amount of data and high frequencies operation situation to get a little faster than the regular method.
 
 ____
