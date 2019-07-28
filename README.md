@@ -225,9 +225,9 @@ ____
 >
 >>[] ( or [^ ] ) means an array, contain some like_expressions;
 >>
->>'[]' statement in 'like' statement returns whether the left_element meet any like_expression from the [] array;
+>>'[]' statement in 'like' statement returns whether the left_element meet any like_expression in the [] array;
 >>
->>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression from the [] array;
+>>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
 
 ## Setup some features of kernel
 ____
