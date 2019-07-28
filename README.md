@@ -239,3 +239,7 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 >
 >So the 'efficientMode' just recommended opened in huge amount of data and high frequencies operation situation to get a little faster than the regular method.
 
+____
+## More questions and suggestions
+If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
+
