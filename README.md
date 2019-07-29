@@ -1,4 +1,4 @@
-# liederDB
+﻿# liederDB
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
@@ -225,9 +225,9 @@ ____
 >
 >>[] ( or [^ ] ) means an array, contain some like_expressions;
 >>
->>'[]' statement in 'like' statement returns whether the left_element meet any like_expression from the [] array;
+>>'[]' statement in 'like' statement returns whether the left_element meet any like_expression in the [] array;
 >>
->>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression from the [] array;
+>>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
 
 ## Setup some features of kernel
 ____
@@ -239,7 +239,7 @@ __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smooth
 >
 >The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The upgrade version of the 'balance' can refer to the 'smoothBalance'.
 >
->The 'smoothBalance' is similar with the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
+>The 'smoothBalance' is similar to the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
 >
 >The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
 
@@ -252,6 +252,14 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 >The 'efficientMode' need more memory space, and if memory space is not enough for 'efficientMode', 'efficientMode' while turn off automatically until memory space back to normal.
 >
 >So the 'efficientMode' just recommended opened in huge amount of data and high frequencies operation situation to get a little faster than the regular method.
+
+### savePath
+__setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath TABLES_SAVE_FOLDER_PATH move__
+>The 'savePath' used when you want to set or change the folder path tables saved on hard disk.
+>
+>TABLES_SAVE_FOLDER_PATH is the path of folder, it could be any file path.
+>
+>The 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you change the folder path, data in old folder will copy to the new one, of course, 'move' means moving to the new one (delete from the old one).
 
 ____
 ## More questions and suggestions
