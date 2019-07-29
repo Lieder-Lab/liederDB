@@ -232,12 +232,14 @@ ____
 ## Setup some features of kernel
 ____
 ### runMode
-__setup runMode hardSpeed__ / __setup runMode balance__ (detault) / __setup runMode memorySave__
+__setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
 >Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
 >
 >The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
 >
->The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most.
+>The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The upgrade version of the 'balance' can refer to the 'smoothBalance'.
+>
+>The 'smoothBalance' is similar with the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
 >
 >The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
 
@@ -254,4 +256,3 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 ____
 ## More questions and suggestions
 If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
-
