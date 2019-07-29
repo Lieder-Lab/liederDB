@@ -225,12 +225,22 @@ ____
 >
 >>[] ( or [^ ] ) means an array, contain some like_expressions;
 >>
->>'[]' statement in 'like' statement returns whether the left_element meet any like_expression in the [] array;
+>>'[]' statement in 'like' statement returns whether the left_element meet any like_expression from the [] array;
 >>
->>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
+>>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression from the [] array;
 
 ## Setup some features of kernel
 ____
+### runMode
+__setup runMode hardSpeed__ / __setup runMode balance__ (detault) / __setup runMode memorySave__
+>Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
+>
+>The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
+>
+>The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most.
+>
+>The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
+
 ### efficientMode
 __setup efficientMode true__ / __setup efficientMode false__ (detault)
 >The 'efficientMode' used in high-density instruction situations makes kernel try to store data of tables with another thread without main thread. 
