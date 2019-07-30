@@ -19,7 +19,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 ____
 ## Create a new table with initialize columns:
 
-__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];
+__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
 
 * e.g.
 >
@@ -32,6 +32,25 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 >_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
 
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
+
+or
+
+__create TABLE_NAME like IMITATED_TABLE_NAME;__
+* e.g.
+>
+>_create Banana like Apple;_
+
+>The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor  same as exsited Apple table, but don't have any content.
+
+or
+
+__create TABLE_NAME copy IMITATED_TABLE_NAME;__
+* e.g.
+>
+>_create Banana copy Apple;_
+
+>The 'create copy' statement copies the whole of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor with the content same as exsited Apple table, just have different table names.
+
 
 * tips
 >[type <COLUMNS_TYPES>] means you can assign every column with corresponding type, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
@@ -208,7 +227,7 @@ ____
 
 ### like
 >#### SINGLE_ELEMENT statement
->__left_element like like_expression__
+>__left_element like like_expression
 >
 >* signs of like_expression
 >>
