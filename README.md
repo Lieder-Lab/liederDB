@@ -41,13 +41,17 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 ____
 ## Insert a new row into exsited table:
 
-__insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES>;__
+__insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>, <COLUMNS_VALUES_2>...];__
 
 * e.g.
 >
->insert Apple set <AppleName, AppleCount, AppleColor> = <Red Fuji, 5, red>;
+>insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;
+>
+>or
+>
+>insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
 
->You would have inserted a new row <Red Fuji, 5, red>.
+>You would have inserted a new row or two new rows into the 'Apple' table.
 
 ____
 ## Update some exsited element in table:
