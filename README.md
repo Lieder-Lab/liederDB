@@ -208,7 +208,7 @@ ____
 
 ### like
 >#### SINGLE_ELEMENT statement
->__left_element like like_expression
+>__left_element like like_expression__
 >
 >* signs of like_expression
 >>
