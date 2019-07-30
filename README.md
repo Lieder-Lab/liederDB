@@ -1,4 +1,4 @@
-﻿# liederDB
+# liederDB
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
@@ -40,16 +40,22 @@ __create TABLE_NAME like IMITATED_TABLE_NAME;__
 >
 >_create Banana like Apple;_
 
->The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor  same as exsited Apple table, but don't have any content.
+>The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor same as exsited Apple table, but don't have any content.
 
 or
 
 __create TABLE_NAME copy IMITATED_TABLE_NAME;__
+
+or
+
+__create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
 * e.g.
 >
 >_create Banana copy Apple;_
 
->The 'create copy' statement copies the whole of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor with the content same as exsited Apple table, just have different table names.
+>The 'create copy' statement copies the whole of the exsited 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as exsited Apple table, just have different table names.
+>
+>Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' enclosed by brackets '()' to generate the new imitated table.
 
 
 * tips
@@ -115,8 +121,8 @@ __remove TABLE_NAME;__
 ____
 ## Select data from some tables:
 
-__select * from Apple where CONDITIONS;__
-__select <COLUMNS_NAMES> from Apple where CONDITIONS;__
+__select * from TABLE_NAME [where CONDITIONS];__
+__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];__
 
 * e.g.
 >
@@ -287,3 +293,4 @@ __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath T
 ____
 ## More questions and suggestions
 If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
+
