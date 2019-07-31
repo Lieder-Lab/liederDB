@@ -1,4 +1,4 @@
-# liederDB
+﻿# liederDB
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
@@ -15,6 +15,16 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * All elements save as String in kernel, so default element type is String.
 * Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
 * __No nesting allowed in <> pair.__
+
+>* __Art of Nesting (Table statement)__
+>
+>The key words like 'create', 'insert', 'update', 'delete', 'select' are called pass-value key words, the statement guided by these words called the 'Table statement'. And those 'Table statement' would return a result table as the result of calculation of the statement whatever you need them or not.
+>
+>If you want to use those result tables in other statements, just make the 'Table statement' enclosed by the brackets '()' and attach a alias behind the 'Table statement' and nest them into the other statements. You would use the result table through it's alias. ( What should to be aware of is the alias of the new table cannot be equal to any exsiting table's name. )
+>
+>Looks like: "create a copy __(create b set <q,w,e,r,t>) s__" or "create a copy __(create b set <q,w,e,r,t>) b__" ( see below for more about 'copy statement' ). You would get two tables called 'a' and 'b' ( at the first sentence, because 's' is an alias, so 's' would't be saved as a normal table, which would be removed from memory after operation ).
+
+
 
 ____
 ## Create a new table with initialize columns:
@@ -293,4 +303,3 @@ __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath T
 ____
 ## More questions and suggestions
 If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
-
