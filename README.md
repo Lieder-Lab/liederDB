@@ -16,7 +16,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
 * __No nesting allowed in <> pair.__
 
->* __Art of Nesting (Table statement)__
+>__Art of Nesting (Table statement)__
 >
 >The key words like 'create', 'insert', 'update', 'delete', 'select' are called pass-value key words, the statement guided by these words called the 'Table statement'. And those 'Table statement' would return a result table as the result of calculation of the statement whatever you need them or not.
 >
