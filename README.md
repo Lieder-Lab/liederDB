@@ -80,11 +80,11 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>
 
 * e.g.
 >
->insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;
+>_insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;_
 >
 >or
 >
->insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
+>_insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;_
 
 >You would have inserted a new row or two new rows into the 'Apple' table.
 
@@ -95,11 +95,25 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 
 * e.g.
 >
->_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
+>_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji;_
 
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
 >CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
+
+Some Clauses:
+>
+>### order by ... [asc (default) / desc] 
+>__CREATE_STATEMENT order by COLUMN_NAME_a [asc (default) / desc] order by COLUMN_NAME_b [asc (default) / desc] ... ;__
+>
+>* e.g.
+>
+>>_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji order by AppleColor desc order by AppleCount;_
+>>
+>>_update Apple order by AppleColor order by AppleCount asc;_
+>
+>>The first example you have updated the table 'Apple' and sort by your 'order by' statements, the secord one just sort the table 'Apple';
+>>
 
 ____
 ## Delete some exsited rows in table:
@@ -132,7 +146,7 @@ ____
 ## Select data from some tables:
 
 __select * from TABLE_NAME [where CONDITIONS];__
-__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];__
+__select <COLUMNS_NAMES> from TABLE_NAME [where CONDITIONS];__
 
 * e.g.
 >
@@ -142,8 +156,61 @@ __select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];_
 
 >Now you got data of Apple as you want to;
 >
->Where statement is not required.
+>Where statement is not necessary.
 
+Some Clauses:
+>
+>### [ left / right / inner (default) / all ] join
+>select * from TABLE_1_NAME [ left / right / inner (default) / all ] join TABLE_2_NAME on TABLE_1_NAME.TABLE_1_COLUMN_NAME = TABLE_2_NAME.TABLE_2_COLUMN_NAME;
+>
+>select <COLUMNS_NAMES> from TABLE_1_NAME [ left / right / inner (default) / all ] join TABLE_2_NAME on TABLE_1_NAME.TABLE_1_COLUMN_NAME = TABLE_2_NAME.TABLE_2_COLUMN_NAME;
+>
+>* e.g.
+>
+>>_select * from Apple left join Banana on Apple.AppleColor = Banana.BananaColor;_
+>>
+>>_select <AppleColor, BananaCount> from Apple join Banana on Apple.AppleCount = Banana.BananaCount;_
+>
+>>Now you got a joined table. The effect of 'join statement' please refer to MySQL.
+>
+>### [ distinct (default) / all ] union
+>select * from TABLE_1_NAME [ distinct (default) / all ] union TABLE_2_NAME;
+>
+>select <COLUMNS_NAMES> from TABLE_1_NAME [ distinct (default) / all ] union TABLE_2_NAME;
+>
+>* e.g.
+>
+>>_select * from Apple union Banana;_
+>>
+>>_select <AppleColor, BananaCount> from Apple all union Banana;_
+>
+>>Now you got a unioned table. The effect of 'join statement' please refer to MySQL.
+>>
+>>What should be awared is TABLE_1_NAME and TABLE_1_NAME in 'union statement' should have the same columns struct.
+>
+>### order by ... [asc (default) / desc]
+>select * / <COLUMNS_NAMES> from TABLE_NAME order by COLUMN_NAME_a [asc (default) / desc] order by COLUMN_NAME_b [asc (default) / desc] ... ;
+>
+>* e.g.
+>
+>>_select * from Apple order by AppleColor desc order by AppleCount;_
+>>
+>>_select <AppleColor, AppleCount> from Apple order by AppleColor order by AppleCount asc;_
+>
+>>Now you got a table ordered by some columns. Kernel would order original table by COLUMN_NAME_a and COLUMN_NAME_b and COLUMN_NAME_c ... ;
+>>
+>>What should be awared is TABLE_1_NAME and TABLE_1_NAME in 'union statement' should have the same columns struct.
+>
+>### count(COLUMN_NAME) 
+>select <count(COLUMN_NAME) [, COLUMNS_NAMES ] > from TABLE_STATEMENT ;
+>
+>* e.g.
+>
+>>_select <count(AppleColor)> from where AppleCount = 2;_
+>>
+>>_select <count(*), AppleColor> from where AppleCount = 2;_
+>
+>>Now you have got a table including some count or columns you want.
 ____
 ## Where statement:
 ### and / or
@@ -155,7 +222,7 @@ ____
 >>
 >>_where AppleCount = 1 and AppleColor = red and/or ..._
 >
->>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
+>>The 'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
 >#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
@@ -243,7 +310,7 @@ ____
 
 ### like
 >#### SINGLE_ELEMENT statement
->__left_element like like_expression
+>__left_element like like_expression__
 >
 >* signs of like_expression
 >>
