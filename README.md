@@ -1,4 +1,4 @@
-﻿# liederDB
+# liederDB
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
@@ -58,14 +58,18 @@ __create TABLE_NAME copy IMITATED_TABLE_NAME;__
 
 or
 
-__create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
+__create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_ALIAS;__
 * e.g.
 >
 >_create Banana copy Apple;_
+>
+>_create Banana copy (select * from Apple) s;_
 
 >The 'create copy' statement copies the whole of the exsited 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as exsited Apple table, just have different table names.
 >
->Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' enclosed by brackets '()' to generate the new imitated table.
+>Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' / 'IMITATED_TABLE_ALIAS' enclosed by brackets '()' to generate the new imitated table.
+>
+>If you used the last method to create new table with 'TABLE_STATEMENT', the 'IMITATED_TABLE_ALIAS' shouldn't be forgotten.
 
 
 * tips
