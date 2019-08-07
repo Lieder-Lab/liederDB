@@ -14,6 +14,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Keywords are not case sensitive;
 * All elements save as String in kernel, so default element type is String.
 * Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
+* The escape character for liederDB is slash '\\', only works for quotation marks '' and "" in <> pair until now.
 * __No nesting allowed in <> pair.__
 
 ____
