@@ -1,4 +1,4 @@
-# liederDB
+﻿# liederDB
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
@@ -15,16 +15,6 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * All elements save as String in kernel, so default element type is String.
 * Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
 * __No nesting allowed in <> pair.__
-
->__Art of Nesting (Table statement)__
->
->The key words like 'create', 'insert', 'update', 'delete', 'select' are called pass-value key words, the statement guided by these words called the 'Table statement'. And those 'Table statement' would return a result table as the result of calculation of the statement whatever you need them or not.
->
->If you want to use those result tables in other statements, just make the 'Table statement' enclosed by the brackets '()' and attach a alias behind the 'Table statement' and nest them into the other statements. You would use the result table through it's alias. ( What should to be aware of is the alias of the new table cannot be equal to any exsiting table's name. )
->
->Looks like: "create a copy __(create b set <q,w,e,r,t>) s__" or "create a copy __(create b set <q,w,e,r,t>) b__" ( see below for more about 'copy statement' ). You would get two tables called 'a' and 'b' ( at the first sentence, because 's' is an alias, so 's' would't be saved as a normal table, which would be removed from memory after operation ).
-
-
 
 ____
 ## Create a new table with initialize columns:
@@ -58,18 +48,14 @@ __create TABLE_NAME copy IMITATED_TABLE_NAME;__
 
 or
 
-__create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_ALIAS;__
+__create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
 * e.g.
 >
 >_create Banana copy Apple;_
->
->_create Banana copy (select * from Apple) s;_
 
 >The 'create copy' statement copies the whole of the exsited 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as exsited Apple table, just have different table names.
 >
->Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' / 'IMITATED_TABLE_ALIAS' enclosed by brackets '()' to generate the new imitated table.
->
->If you used the last method to create new table with 'TABLE_STATEMENT', the 'IMITATED_TABLE_ALIAS' shouldn't be forgotten.
+>Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' enclosed by brackets '()' to generate the new imitated table.
 
 
 * tips
@@ -84,11 +70,11 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>
 
 * e.g.
 >
->_insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;_
+>insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;
 >
 >or
 >
->_insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;_
+>insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
 
 >You would have inserted a new row or two new rows into the 'Apple' table.
 
@@ -99,25 +85,11 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
 
 * e.g.
 >
->_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji;_
+>_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
 
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
 >CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
-
-Some Clauses:
->
->### order by ... [asc (default) / desc] 
->__CREATE_STATEMENT order by COLUMN_NAME_a [asc (default) / desc] order by COLUMN_NAME_b [asc (default) / desc] ... ;__
->
->* e.g.
->
->>_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji order by AppleColor desc order by AppleCount;_
->>
->>_update Apple order by AppleColor order by AppleCount asc;_
->
->>The first example you have updated the table 'Apple' and sort by your 'order by' statements, the secord one just sort the table 'Apple';
->>
 
 ____
 ## Delete some exsited rows in table:
@@ -150,7 +122,7 @@ ____
 ## Select data from some tables:
 
 __select * from TABLE_NAME [where CONDITIONS];__
-__select <COLUMNS_NAMES> from TABLE_NAME [where CONDITIONS];__
+__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];__
 
 * e.g.
 >
@@ -160,61 +132,8 @@ __select <COLUMNS_NAMES> from TABLE_NAME [where CONDITIONS];__
 
 >Now you got data of Apple as you want to;
 >
->Where statement is not necessary.
+>Where statement is not required.
 
-Some Clauses:
->
->### [ left / right / inner (default) / all ] join
->select * from TABLE_1_NAME [ left / right / inner (default) / all ] join TABLE_2_NAME on TABLE_1_NAME.TABLE_1_COLUMN_NAME = TABLE_2_NAME.TABLE_2_COLUMN_NAME;
->
->select <COLUMNS_NAMES> from TABLE_1_NAME [ left / right / inner (default) / all ] join TABLE_2_NAME on TABLE_1_NAME.TABLE_1_COLUMN_NAME = TABLE_2_NAME.TABLE_2_COLUMN_NAME;
->
->* e.g.
->
->>_select * from Apple left join Banana on Apple.AppleColor = Banana.BananaColor;_
->>
->>_select <AppleColor, BananaCount> from Apple join Banana on Apple.AppleCount = Banana.BananaCount;_
->
->>Now you got a joined table. The effect of 'join statement' please refer to MySQL.
->
->### [ distinct (default) / all ] union
->select * from TABLE_1_NAME [ distinct (default) / all ] union TABLE_2_NAME;
->
->select <COLUMNS_NAMES> from TABLE_1_NAME [ distinct (default) / all ] union TABLE_2_NAME;
->
->* e.g.
->
->>_select * from Apple union Banana;_
->>
->>_select <AppleColor, BananaCount> from Apple all union Banana;_
->
->>Now you got a unioned table. The effect of 'join statement' please refer to MySQL.
->>
->>What should be awared is TABLE_1_NAME and TABLE_1_NAME in 'union statement' should have the same columns struct.
->
->### order by ... [asc (default) / desc]
->select * / <COLUMNS_NAMES> from TABLE_NAME order by COLUMN_NAME_a [asc (default) / desc] order by COLUMN_NAME_b [asc (default) / desc] ... ;
->
->* e.g.
->
->>_select * from Apple order by AppleColor desc order by AppleCount;_
->>
->>_select <AppleColor, AppleCount> from Apple order by AppleColor order by AppleCount asc;_
->
->>Now you got a table ordered by some columns. Kernel would order original table by COLUMN_NAME_a and COLUMN_NAME_b and COLUMN_NAME_c ... ;
->>
->>What should be awared is TABLE_1_NAME and TABLE_1_NAME in 'union statement' should have the same columns struct.
->
->### count(COLUMN_NAME) 
->select <count(COLUMN_NAME) [, COLUMNS_NAMES ] > from TABLE_STATEMENT ;
->
->* e.g.
->
->>_select <count(AppleColor)> from where AppleCount = 2;_
->>
->>_select <count(*), AppleColor> from where AppleCount = 2;_
->
->>Now you have got a table including some count or columns you want.
 ____
 ## Where statement:
 ### and / or
@@ -226,7 +145,7 @@ ____
 >>
 >>_where AppleCount = 1 and AppleColor = red and/or ..._
 >
->>The 'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
+>>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
 >#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
@@ -314,7 +233,7 @@ ____
 
 ### like
 >#### SINGLE_ELEMENT statement
->__left_element like like_expression__
+>__left_element like like_expression
 >
 >* signs of like_expression
 >>
@@ -339,8 +258,35 @@ ____
 >>
 >>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
 
-## Setup some features of kernel
-____
+----
+
+## Some Substatements:
+
+### order by
+
+(used in 'like' statement or 'update' statement)
+
+__TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number]__
+
+* e.g.
+
+>_update Apple order by AppleColor_
+>
+>_update Apple order by AppleCount desc number_
+>
+>_select * from Apple order by AppleColor asc_
+>
+>_select AppleColor, AppleCount from Apple order by AppleCount number_
+
+>The keyword pair 'desc / asc' means 'descending' and 'ascending', and 'asc' is default when you miss indicating them.
+>
+>The keyword 'number' indicates the way the table sorted by, digital or dictionary. Of course, 'number' means digital sort, and missing 'number' means dictionary sort. What should to be aware of is that digital sort only works when all element of the 'TABLE_COLUMN' is digital.
+>
+>In 'update' statement, 'order by' would sort whole table order by table column named TABLE_COLUMN_NAME.
+----
+
+## Setup some features for kernel
+
 ### runMode
 __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
 >Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
@@ -373,4 +319,4 @@ __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath T
 
 ____
 ## More questions and suggestions
-If you have more questions or suggestions, please email to 357274178@qq.com. It's my pleasure to get your email.
+If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
