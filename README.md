@@ -20,7 +20,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 ____
 ## Create a new table with initialize columns:
 
-__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
+__create TABLE_NAME set \<COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
 
 * e.g.
 >
@@ -82,20 +82,35 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>
 ____
 ## Update some exsited element in table:
 
-__update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> where CONDITIONS;__
+__update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 
 * e.g.
 >
->_update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;_
+>_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji;_
 
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
->CONDITIONS after 'where' is where statement(not required), specifies the constraints of the preceding statement. More about rules about where statement, please see the following chapter for details.
+>The 'where statement' is not mandatory, specifies the constraints of the preceding statement. More about rules about 'where statement', please see the following chapter for details.
+
+### some operation marks: ++ / -- / += / -=
+
+(Those marks only work for numerical data, including int and double type)
+
+* e.g.
+>_update Apple set \<AppleCount> = <++> where AppleName = Red Fuji;_
+>
+>_update Apple set <AppleCount, AppleColor> = <--. green> where AppleName = Red Fuji;_
+>
+>_update Apple set \<AppleColor, AppleCount> = \<green, +=3.0> where AppleCount = 3 and AppleName = Red Fuji;_
+
+>If you repleace some COLUMNS_VALUEs in <COLUMNS_VALUES> with the operation mark, data in corresponding column would be self-increased or self-decreased.
+>
+>What should be noticed is that '++' and '--' only work for numerical data, '+=' for string data means 'append', '-=' for string data means remove corresponding characters in the string. Of course, '+=' and '-=' for numerical data is working also.
 
 ____
 ## Delete some exsited rows in table:
 
-__delete TABLE_NAME where CONDITIONS;__
+__delete TABLE_NAME [where statement];__
 
 * e.g.
 >
@@ -105,7 +120,7 @@ __delete TABLE_NAME where CONDITIONS;__
 >
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji;
 >
->Where statement is not required, commend without where statement means clear all elements of the table.
+>The 'where statement' is not mandatory, commend without 'where statement' means clear all elements of the table.
 
 ____
 ## Remove an exsited table:
@@ -122,8 +137,9 @@ __remove TABLE_NAME;__
 ____
 ## Select data from some tables:
 
-__select * from TABLE_NAME [where CONDITIONS];__
-__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];__
+__select * from TABLE_NAME [where statement];__
+
+__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where statement];__
 
 * e.g.
 >
@@ -133,7 +149,7 @@ __select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where CONDITIONS];_
 
 >Now you got data of Apple as you want to;
 >
->Where statement is not required.
+>The 'where statement' is not mandatory.
 
 ____
 ## Where statement:
@@ -144,7 +160,7 @@ ____
 >
 >* e.g.
 >>
->>_where AppleCount = 1 and AppleColor = red and/or ..._
+>>_where __AppleCount = 1 and AppleColor = red__ and/or ..._
 >
 >>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
@@ -153,7 +169,7 @@ ____
 >
 >* e.g.
 >>
->>_where AppleCount = 1 or AppleColor = red and/or ..._
+>>_where __AppleCount = 1 or AppleColor = red__ and/or ..._
 >
 >>'or' sub statement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
@@ -166,9 +182,9 @@ ____
 >
 >* e.g.
 >>
->>_where AppleCount = 1_
+>>_where __AppleCount = 1___
 >>
->>_where AppleCount != 1_
+>>_where __AppleCount != 1___
 >
 >>'=' and '==' are same for liederDB, check whether object_1 and object_2 are equal;
 >>
@@ -180,9 +196,9 @@ ____
 >__number_1 LOGICAL_OPERATORS number_2__
 >
 >* e.g.
->>_where AppleCount > 1_
+>>_where __AppleCount > 1___
 >>
->>_where AppleCount <= 1_
+>>_where __AppleCount <= 1___
 >
 >>The role of these symbols is the same as their meaning in mathematics;
 >>
@@ -202,33 +218,33 @@ ____
 >
 >* e.g.
 >>
->>_where AppleCount in (select count from CountList) countTable_ (1)
+>>_where __AppleCount in (select count from CountList) countTable___ (1)
 >>
 >>or
 >>
->>_where AppleCount in (select * from CountList) countTable[count]_ (2)
+>>_where __AppleCount in (select * from CountList) countTable[count]___ (2)
 >>
 >>or
 >>
->>_where AppleCount in CountList[count]_ (3)
+>>_where __AppleCount in CountList[count]___ (3)
 >
 >> TABLE statement means there must be a selected or exsited table followed behind 'in';
 >>
->> What should noticed is __this statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column from the table which contains more than one columns through declaring the column name after table name and packaged by brackets '[]' like (2) or (3);
+>> What should be noticed is __this statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column from the table which contains more than one columns through declaring the column name after table name and packaged by brackets '[ ]' like (2) or (3);
 >>
->> If use 'select' statement in TABLE statement, brackets '()' and table alias are mandatory;
+>> If use 'select' statement in TABLE statement, brackets '( )' and table alias are mandatory;
 >>
 >> TABLE statement returns whether the left element appered in the column of the table.
->#### [] statement
+>#### [ ] statement
 >__left_element in [element_1, element_2, element_3,  ...]__
 >
 >* e.g.
 >>
->>_where AppleCount in [1,2,3]_
+>>_where AppleCount in __[1,2,3]___
 >
->>[] means an array, elements in this array should be separated by ',';
+>>[ ] means an array, elements in this array should be separated by ',';
 >>
->>'in[]' returns whether the left_element appered in the right array;
+>>'in[ ]' returns whether the left_element appered in the right array;
 >>
 >>This statement works like 'like' statement shown below, about more please see the 'like' statement.
 
@@ -243,21 +259,21 @@ ____
 >> '%' represents any number(including 0) of arbitrary characters;
 >* e.g.
 >>
->>_where AppleName like R&%d %j_
+>>_where AppleName __like__ R&%d %j_
 >
 >>Of course, 'Red Fuji' meet this expression.
->#### [] ( / [^ ]) statement
+>#### [ ] ( / [^ ]) statement
 >__left_element like [like_expression_1, like_expression_2, ...]/[^like_expression_1, like_expression_2, ...]__
 >
 >* e.g.
 >>
 >>_where AppleName like [R%d %j, Re% F%i]_
 >
->>[] ( or [^ ] ) means an array, contain some like_expressions;
+>>[ ] ( or [^ ] ) means an array, contain some like_expressions;
 >>
->>'[]' statement in 'like' statement returns whether the left_element meet any like_expression in the [] array;
+>>'[ ]' statement in 'like' statement returns whether the left_element meet any like_expression in the [ ] array;
 >>
->>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [] array;
+>>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [ ] array;
 
 ----
 
@@ -271,13 +287,13 @@ __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number
 
 * e.g.
 
->_update Apple order by AppleColor_
+>_update Apple __order by__ AppleColor_
 >
->_update Apple order by AppleCount desc number_
+>_update Apple __order by__ AppleCount desc number_
 >
->_select * from Apple order by AppleColor asc_
+>_select * from Apple __order by__ AppleColor asc_
 >
->_select AppleColor, AppleCount from Apple order by AppleCount number_
+>_select AppleColor, AppleCount from Apple __order by__ AppleCount number_
 
 >The keyword pair 'desc / asc' means 'descending' and 'ascending', and 'asc' is default when you miss indicating them.
 >
