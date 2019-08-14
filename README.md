@@ -23,14 +23,14 @@ ____
 __create TABLE_NAME set \<COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
 
 * e.g.
-
-    _create Apple set <AppleName, AppleCount, AppleColor>;_
+>
+    create Apple set <AppleName, AppleCount, AppleColor>;
 
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 
 * e.g.
-
-    _create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+>
+    create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;
 
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
 
@@ -39,7 +39,7 @@ or
 __create TABLE_NAME like IMITATED_TABLE_NAME;__
 * e.g.
 >
->_create Banana like Apple;_
+    create Banana like Apple;
 
 >The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor same as exsited Apple table, but don't have any content.
 
@@ -52,7 +52,7 @@ or
 __create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
 * e.g.
 >
->_create Banana copy Apple;_
+    create Banana copy Apple;
 
 >The 'create copy' statement copies the whole of the exsited 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as exsited Apple table, just have different table names.
 >
