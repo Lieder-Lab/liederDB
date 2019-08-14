@@ -23,14 +23,14 @@ ____
 __create TABLE_NAME set \<COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
 
 * e.g.
->
->_create Apple set <AppleName, AppleCount, AppleColor>;_
+
+    _create Apple set <AppleName, AppleCount, AppleColor>;_
 
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor.
 
 * e.g.
->
->_create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
+
+    _create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;_
 
 >You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
 
@@ -259,7 +259,7 @@ ____
 >> '%' represents any number(including 0) of arbitrary characters;
 >* e.g.
 >>
->       _where AppleName __like__ R&%d %j_
+>>_where AppleName __like__ R&%d %j_
 >
 >>Of course, 'Red Fuji' meet this expression.
 >#### [ ] ( / [^ ]) statement
@@ -287,12 +287,13 @@ __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number
 
 * e.g.
 
-        >_update Apple __order by__ AppleColor_
-        >
-        >_update Apple __order by__ AppleCount desc number_
-        >_select * from Apple __order by__ AppleColor asc_
-        >
-        >_select AppleColor, AppleCount from Apple __order by__ AppleCount number_
+>_update Apple __order by__ AppleColor_
+>
+>_update Apple __order by__ AppleCount desc number_
+>
+>_select * from Apple __order by__ AppleColor asc_
+>
+>_select AppleColor, AppleCount from Apple __order by__ AppleCount number_
 
 >The keyword pair 'desc / asc' means 'descending' and 'ascending', and 'asc' is default when you miss indicating them.
 >
@@ -305,12 +306,15 @@ __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number
 
 ### runMode
 __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
-
-        Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
-        The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
-        The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The upgrade version of the 'balance' can refer to the 'smoothBalance'.
-        The 'smoothBalance' is similar to the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
-        The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
+>Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
+>
+>The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
+>
+>The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The upgrade version of the 'balance' can refer to the 'smoothBalance'.
+>
+>The 'smoothBalance' is similar to the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
+>
+>The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
 
 ### efficientMode
 __setup efficientMode true__ / __setup efficientMode false__ (detault)
