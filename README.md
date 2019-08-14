@@ -71,13 +71,11 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>
 
 * e.g.
 >
->insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;
+    insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>;
 >
->or
->
->insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
+    insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
 
->You would have inserted a new row or two new rows into the 'Apple' table.
+>You would have inserted data of a new row or two new rows into the 'Apple' table.
 
 ____
 ## Update some exsited element in table:
@@ -86,7 +84,7 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 
 * e.g.
 >
->_update Apple set \<AppleColor> = \<green> where AppleCount = 3 and AppleName = Red Fuji;_
+    update Apple set <AppleColor> = <green> where AppleCount = 3 and AppleName = Red Fuji;
 
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
@@ -97,11 +95,12 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 (Those marks only work for numerical data, including int and double type)
 
 * e.g.
->_update Apple set \<AppleCount> = <++> where AppleName = Red Fuji;_
 >
->_update Apple set <AppleCount, AppleColor> = <--. green> where AppleName = Red Fuji;_
+    update Apple set <AppleCount> = <++> where AppleName = Red Fuji;
 >
->_update Apple set \<AppleColor, AppleCount> = \<green, +=3.0> where AppleCount = 3 and AppleName = Red Fuji;_
+    update Apple set <AppleCount, AppleColor> = <--. green> where AppleName = Red Fuji;
+>
+    update Apple set <AppleColor, AppleCount> = <green, +=3.0> where AppleCount = 3 and AppleName = Red Fuji;
 
 >If you repleace some COLUMNS_VALUEs in <COLUMNS_VALUES> with the operation mark, data in corresponding column would be self-increased or self-decreased.
 >
@@ -114,7 +113,7 @@ __delete TABLE_NAME [where statement];__
 
 * e.g.
 >
->_delete Apple where AppleCount = 3 and AppleName = Red Fuji;_
+    delete Apple where AppleCount = 3 and AppleName = Red Fuji;
 
 >Delete statement just means remove some rows from exsited table, or clear the table, not remove whole table(remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
@@ -130,9 +129,9 @@ __remove TABLE_NAME;__
 
 * e.g.
 >
->_remove Apple;_
+    remove Apple;
 
->You have removed whole table named Apple.
+>You would remove whole table named Apple.
 
 ____
 ## Select data from some tables:
@@ -143,9 +142,9 @@ __select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where statement];__
 
 * e.g.
 >
->_select * from Apple;_
+    select * from Apple;
 >
->_select <AppleColor, AppleCount> from Apple where AppleCount = 3;_
+    select <AppleColor, AppleCount> from Apple where AppleCount = 3;
 
 >Now you got data of Apple as you want to;
 >
@@ -160,7 +159,7 @@ ____
 >
 >* e.g.
 >>
->>_where __AppleCount = 1 and AppleColor = red__ and/or ..._
+>       where __AppleCount = 1 and AppleColor = red__ and/or ...
 >
 >>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
@@ -169,7 +168,7 @@ ____
 >
 >* e.g.
 >>
->>_where __AppleCount = 1 or AppleColor = red__ and/or ..._
+>       where __AppleCount = 1 or AppleColor = red__ and/or ...
 >
 >>'or' sub statement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
@@ -182,9 +181,9 @@ ____
 >
 >* e.g.
 >>
->>_where __AppleCount = 1___
+>       where AppleCount = 1
 >>
->>_where __AppleCount != 1___
+>       where AppleCount != 1
 >
 >>'=' and '==' are same for liederDB, check whether object_1 and object_2 are equal;
 >>
@@ -196,9 +195,10 @@ ____
 >__number_1 LOGICAL_OPERATORS number_2__
 >
 >* e.g.
->>_where __AppleCount > 1___
 >>
->>_where __AppleCount <= 1___
+>       where AppleCount > 1
+>>
+>       where AppleCount <= 1
 >
 >>The role of these symbols is the same as their meaning in mathematics;
 >>
@@ -217,16 +217,16 @@ ____
 >__left_element in EXSITED_TABLE[SINGLE_COLUMN_NAME]__
 >
 >* e.g.
+>
+>(1)
 >>
->>_where __AppleCount in (select count from CountList) countTable___ (1)
+>       where AppleCount in (select count from CountList) countTable 
+>(2)
 >>
->>or
+>       where AppleCount in (select * from CountList) countTable[count]
+>(3)
 >>
->>_where __AppleCount in (select * from CountList) countTable[count]___ (2)
->>
->>or
->>
->>_where __AppleCount in CountList[count]___ (3)
+>       where AppleCount in CountList[count]
 >
 >> TABLE statement means there must be a selected or exsited table followed behind 'in';
 >>
@@ -240,7 +240,7 @@ ____
 >
 >* e.g.
 >>
->>_where AppleCount in __[1,2,3]___
+>       where AppleCount in [1,2,3]
 >
 >>[ ] means an array, elements in this array should be separated by ',';
 >>
@@ -250,7 +250,7 @@ ____
 
 ### like
 >#### SINGLE_ELEMENT statement
->__left_element like like_expression
+>__LEFT_ELEMENT like LIKE_EXPRESSION__
 >
 >* signs of like_expression
 >>
@@ -259,7 +259,7 @@ ____
 >> '%' represents any number(including 0) of arbitrary characters;
 >* e.g.
 >>
->>_where AppleName __like__ R&%d %j_
+>       where AppleName like 'R&%d %j'
 >
 >>Of course, 'Red Fuji' meet this expression.
 >#### [ ] ( / [^ ]) statement
@@ -267,7 +267,7 @@ ____
 >
 >* e.g.
 >>
->>_where AppleName like [R%d %j, Re% F%i]_
+>       where AppleName like [R%d %j, Re% F%i]
 >
 >>[ ] ( or [^ ] ) means an array, contain some like_expressions;
 >>
@@ -286,14 +286,14 @@ ____
 __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number]__
 
 * e.g.
-
->_update Apple __order by__ AppleColor_
 >
->_update Apple __order by__ AppleCount desc number_
+    update Apple order by AppleColor
 >
->_select * from Apple __order by__ AppleColor asc_
+    update Apple order by AppleCount desc number
 >
->_select AppleColor, AppleCount from Apple __order by__ AppleCount number_
+    select * from Apple order by AppleColor asc
+>
+    select AppleColor, AppleCount from Apple order by AppleCount number
 
 >The keyword pair 'desc / asc' means 'descending' and 'ascending', and 'asc' is default when you miss indicating them.
 >
