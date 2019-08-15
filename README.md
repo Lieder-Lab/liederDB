@@ -92,8 +92,6 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 
 ### some operation marks: ++ / -- / += / -=
 
-(Those marks only work for numerical data, including int and double type)
-
 * e.g.
 >
     update Apple set <AppleCount> = <++> where AppleName = Red Fuji;
@@ -149,7 +147,6 @@ __select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where statement];__
 >Now you got data of Apple as you want to;
 >
 >The 'where statement' is not mandatory.
-
 ____
 ## Where statement:
 ### and / or
@@ -228,7 +225,7 @@ ____
 >>
 >       where AppleCount in CountList[count]
 >
->> TABLE statement means there must be a selected or exsited table followed behind 'in';
+>> TABLE statement means there must be a selected or exsited table follow behind 'in';
 >>
 >> What should be noticed is __this statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column from the table which contains more than one columns through declaring the column name after table name and packaged by brackets '[ ]' like (2) or (3);
 >>
@@ -277,11 +274,11 @@ ____
 
 ----
 
-## Some Substatements:
+## Some Optional Substatements:
 
 ### order by
 
-(used in 'like' statement or 'update' statement)
+(Only for 'select' statement and 'update' statement)
 
 __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number]__
 
@@ -300,6 +297,29 @@ __TABLE_STATEMENT order by TABLE_COLUMN_NAME [desc / asc__ (default) __] [number
 >The keyword 'number' indicates the way the table sorted by, digital or dictionary. Of course, 'number' means digital sort, and missing 'number' means dictionary sort. What should to be aware of is that digital sort only works when all element of the 'TABLE_COLUMN' is digital.
 >
 >In 'update' statement, 'order by' would sort whole table order by table column named TABLE_COLUMN_NAME.
+
+### skip / limit
+
+(Only for 'select' statement)
+
+__SELECT_STATEMENT [skip SKIP_COUNT] [limit LIMIT_COUNT]__
+
+* e.g.
+>
+    select * from Apple skip 1;
+>
+    select * from Apple skip 1 limit 2;
+>
+    select * from Apple limit 2;
+
+>The keyword 'skip' and the SKIP_COUNT behind it mean remove / skip the first SKIP_COUNT rows of the result data.
+>
+>The keyword 'limit' and the LIMIT_COUNT behind it mean only take the first LIMIT_COUNT rows of the remaining result data.
+>
+>What should be noticed is that the SKIP_COUNT and LIMIT_COUNT must be positive, otherwise this statement will not work. 
+>
+>One SELECT_STATEMENT could only contain one LIMIT_STATEMENT and one SKIP_STATEMENT, if you need some complex skip or limit statement, you can consider using SELECT_STATEMENT nesting.
+
 ----
 
 ## Setup some features for kernel
@@ -330,7 +350,7 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath TABLES_SAVE_FOLDER_PATH move__
 >The 'savePath' used when you want to set or change the folder path tables saved on hard disk.
 >
->TABLES_SAVE_FOLDER_PATH is the path of folder, it could be any file path.
+>The 'TABLES_SAVE_FOLDER_PATH' is the path of folder, it could be any file path.
 >
 >The 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you change the folder path, data in old folder will copy to the new one, of course, 'move' means moving to the new one (delete from the old one).
 
