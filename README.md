@@ -134,19 +134,23 @@ __remove TABLE_NAME;__
 ____
 ## Select data from some tables:
 
-__select * from TABLE_NAME [where statement];__
+__select [distinct__ (default) __/ all] * from TABLE_NAME [where statement];__
 
-__select <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where statement];__
+__select [distinct__ (default) __/ all] <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from TABLE_NAME [where statement];__
 
 * e.g.
 >
     select * from Apple;
+>
+    select all * from Apple;
 >
     select <AppleColor, AppleCount> from Apple where AppleCount = 3;
 
 >Now you got data of Apple as you want to;
 >
 >The 'where statement' is not mandatory.
+>
+>The [distinct (default) / all] is optional, absence or 'distinct' means this SELECT_STATEMENT just returns distinct result, 'all' means returns all result.
 ____
 ## Where statement:
 ### and / or
@@ -320,6 +324,35 @@ __SELECT_STATEMENT [skip SKIP_COUNT] [limit LIMIT_COUNT]__
 >
 >One SELECT_STATEMENT could only contain one LIMIT_STATEMENT and one SKIP_STATEMENT, if you need some complex skip or limit statement, you can consider using SELECT_STATEMENT nesting.
 
+### ELEMENT_FUNCTION: count / sum / max / min / avg / first / last
+
+(Only for 'select' statement)
+
+__select <ELEMENT_FUNCTION(* / COLUMN_NAME)> from TABLE_NAME__
+
+* e.g.
+>
+    select <count(AppleColor)> from Apple;
+>
+    select <count(*)> from Apple;
+>
+    select <max(AppleCount), AppleColor> from Apple;
+>
+    select <AppleName, first(AppleColor)> from Apple where AppleCount > 2;
+
+>The 'ELEMENT_FUNCTION' are functions with only one result, and will write the result into every cell of corresponding column.
+>
+>>The 'count' function calculates the row count of the column named 'COLUMN_NAME' from the result table.
+>
+>>The 'sum' function sums the numerial value of the column named 'COLUMN_NAME' from the result table.
+>
+>>The 'max' or 'min' function returns the max or min numerial value of the column named 'COLUMN_NAME' from the result table.
+>
+>>The 'avg' function returns the average numerial value of the column named 'COLUMN_NAME' from the result table.
+>
+>>The 'first' or 'last' function returns the first or last value of the column named 'COLUMN_NAME' from the result table.
+>
+>What should be noticed is that functions 'sum / max / min / avg' only work for numerial value.
 ----
 
 ## Setup some features for kernel
