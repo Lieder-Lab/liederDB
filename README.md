@@ -109,15 +109,25 @@ ____
 
 __delete TABLE_NAME [where statement];__
 
+__delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ (start from 1)
+
 * e.g.
 >
     delete Apple where AppleCount = 3 and AppleName = Red Fuji;
+>
+    delete Applt at 1;
+>
+    delete Applt at last 2;
+>
+    delete Apple at [2, 3, 4];
 
->Delete statement just means remove some rows from exsited table, or clear the table, not remove whole table(remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
+>Delete statement just means remove data of some rows from exsited table, or clear whole table, not remove whole table (remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
->Now you removed the row where AppleCount = 3 and AppleName = Red Fuji;
+>Now you removed the row where AppleCount = 3 and AppleName = Red Fuji or removed some rows in 'at substatement';
 >
->The 'where statement' is not mandatory, commend without 'where statement' means clear all elements of the table.
+>The 'where substatement' and the 'at substatement' are not mandatory. commend without both 'where substatement' and 'at substatement' means clear all elements of the table.
+>
+>For 'at substatement', 'at ROW_INDEX' means delete row which index == ROW_INDEX; 'at last ROW_INDEX' means delete row which index == ROWS_COUNT - ROW_INDEX + 1 if this row exsited; 'at [ROW_INDEXES]' means delete rows which index in array [ROW_INDEXES].
 
 ____
 ## Remove an exsited table:
