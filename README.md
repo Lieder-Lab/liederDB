@@ -109,7 +109,9 @@ ____
 
 __delete TABLE_NAME [where statement];__
 
-__delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ (start from 1)
+__delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ 
+
+__delete TABLE_NAME [from [first__(default), __last] start_ROW_INDEX] [to  [first__(default), __last] end_ROW_INDEX]__ (start from 1)
 
 * e.g.
 >
@@ -120,6 +122,10 @@ __delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ (
     delete Applt at last 2;
 >
     delete Apple at [2, 3, 4];
+>
+    delete Apple from 1 to last 3;
+>
+    delete Apple from last 2;
 
 >Delete statement just means remove data of some rows from exsited table, or clear whole table, not remove whole table (remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
@@ -128,6 +134,8 @@ __delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ (
 >The 'where substatement' and the 'at substatement' are not mandatory. commend without both 'where substatement' and 'at substatement' means clear all elements of the table.
 >
 >For 'at substatement', 'at ROW_INDEX' means delete row which index == ROW_INDEX; 'at last ROW_INDEX' means delete row which index == ROWS_COUNT - ROW_INDEX + 1 if this row exsited; 'at [ROW_INDEXES]' means delete rows which index in array [ROW_INDEXES].
+>
+>For 'from / to substatement', means a range of row to delete. The 'start_ROW_INDEX' is start, and the 'end_ROW_INDEX' is end, 'first / last' is available for 'start_ROW_INDEX' and 'end_ROW_INDEX', as same, 'first' is default.
 
 ____
 ## Remove an exsited table:
