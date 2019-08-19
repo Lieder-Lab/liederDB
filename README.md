@@ -18,9 +18,9 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * __No nesting allowed in <> pair.__
 
 ____
-## Create a new table with initialize columns:
+## Create a new table with initializing columns:
 
-__create TABLE_NAME set \<COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues;__
+__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];__
 
 * e.g.
 >
@@ -41,7 +41,7 @@ __create TABLE_NAME like IMITATED_TABLE_NAME;__
 >
     create Banana like Apple;
 
->The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor same as exsited Apple table, but don't have any content.
+>The 'create like' statement just copies the frame of the 'IMITATED_TABLE' to a new table named 'TABLE_NAME' without table name and any content. So you have created an empty table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor same as existed Apple table, but don't have any content.
 
 or
 
@@ -54,7 +54,7 @@ __create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
 >
     create Banana copy Apple;
 
->The 'create copy' statement copies the whole of the exsited 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as exsited Apple table, just have different table names.
+>The 'create copy' statement copies the whole of the existed 'IMITATED_TABLE' to a new table named 'TABLE_NAME' contains the content. So you have created a table named Banana which has 3 columns named separately AppleName, AppleCount and AppleColor and be with the content same as existed Apple table, just have different table names.
 >
 >Also, you can put a TABLE_STATEMENT before the 'IMITATED_TABLE_NAME' enclosed by brackets '()' to generate the new imitated table.
 
@@ -62,10 +62,10 @@ __create TABLE_NAME copy (TABLE_STATEMENT) IMITATED_TABLE_NAME;__
 * tips
 >[type <COLUMNS_TYPES>] means you can assign every column with corresponding type, but should note that the length of COLUMNS_TYPE array should be equal as COLUMNS_NAME's length;
 >
->[default <COLUMNS_defaultValues>] is default value of every column when you insert a new row without input some columns.
+>[default <COLUMNS_defaultValues>] is default value of every column when you insert a new row without set any data.
 
 ____
-## Insert a new row into exsited table:
+## Insert a new row into an existed table:
 
 __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>, <COLUMNS_VALUES_2>...];__
 
@@ -75,10 +75,10 @@ __insert TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [, <COLUMNS_VALUES_1>
 >
     insert Apple set <AppleName, AppleCount, AppleColor> = <'Red Fuji', 5, red>, <'Yellow Banana', 5, green>;
 
->You would have inserted data of a new row or two new rows into the 'Apple' table.
+>You would have inserted the data of one new row or more than one new row into the 'Apple' table.
 
 ____
-## Update some exsited element in table:
+## Update some existed elements in table:
 
 __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 
@@ -100,12 +100,12 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 >
     update Apple set <AppleColor, AppleCount> = <green, +=3.0> where AppleCount = 3 and AppleName = Red Fuji;
 
->If you repleace some COLUMNS_VALUEs in <COLUMNS_VALUES> with the operation mark, data in corresponding column would be self-increased or self-decreased.
+>If you repleace some COLUMNS_VALUEs in <COLUMNS_VALUES> with the operation mark, value in corresponding column would be self-increased or self-decreased.
 >
->What should be noticed is that '++' and '--' only work for numerical data, '+=' for string data means 'append', '-=' for string data means remove corresponding characters in the string. Of course, '+=' and '-=' for numerical data is working also.
+>What should be noticed is that '++' and '--' only work for numerical value, '+=' for string value means 'append', '-=' for string value means remove corresponding characters in the string. Of course, '+=' and '-=' for numerical value is worked as numerical operations also.
 
 ____
-## Delete some exsited rows in table:
+## Delete some existed rows of table:
 
 __delete TABLE_NAME [where statement];__
 
@@ -127,18 +127,18 @@ __delete TABLE_NAME [from [first__(default), __last] start_ROW_INDEX] [to  [firs
 >
     delete Apple from last 2;
 
->The 'delete' statement just means remove the data of some rows from exsited table, or clear whole table, not remove whole table (remove whole table see 'remove' statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
+>The 'delete' statement just means remove the data of some rows from a existed table, or clear whole table, not remove whole table (remove whole table see 'remove' statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji or removed some rows in 'at substatement';
 >
 >The 'where substatement' and the 'at substatement' are not mandatory. commend without both 'where substatement' and 'at substatement' means clear all elements of the table.
 >
->For 'at substatement', 'at ROW_INDEX' means delete row which index == ROW_INDEX; 'at last ROW_INDEX' means delete row which index == ROWS_COUNT - ROW_INDEX + 1 if this row exsited; 'at [ROW_INDEXES]' means delete rows which index in array [ROW_INDEXES].
+>For 'at substatement', 'at ROW_INDEX' means delete row which index == ROW_INDEX; 'at last ROW_INDEX' means delete row which index == ROWS_COUNT - ROW_INDEX + 1 if this row existed; 'at [ROW_INDEXES]' means delete rows which index in array [ROW_INDEXES].
 >
 >For 'from / to substatement', means a range of row to delete. The 'start_ROW_INDEX' is start, and the 'end_ROW_INDEX' is end, 'first / last' is available for 'start_ROW_INDEX' and 'end_ROW_INDEX', as same, 'first' is default.
 
 ____
-## Remove an exsited table:
+## Remove an existed table:
 
 
 __remove TABLE_NAME;__
@@ -191,7 +191,7 @@ ____
 >
 >>The 'or' substatement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
->_The 'and' substatement and 'or' substatement are on the same grammatical levels in 'where' statement, but 'and' substatement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
+>_The 'and' substatement and 'or' substatement are on the same grammatical levels in 'where' statement, but 'and' substatement has a higher priority than 'or' substatement. Kernel would  process all 'and' statements first and then process the 'or' substatement later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
 ### LOGICAL_OPERATORS:  =    ==    >    <    >=    <=    !=
 
@@ -233,7 +233,7 @@ ____
 >
 >or
 >
->__left_element in EXSITED_TABLE[SINGLE_COLUMN_NAME]__
+>__left_element in EXISTED_TABLE[SINGLE_COLUMN_NAME]__
 >
 >* e.g.
 >
@@ -247,9 +247,9 @@ ____
 >>
 >       where AppleCount in CountList[count]
 >
->> The 'table' statement behind 'in' called 'in table' statement only used for selected or exsited table;
+>> The 'table' statement behind 'in' called 'in table' statement only used for selected or existed table;
 >>
->> What should be noticed is that __the 'in table' statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column through declaring the column name after the table name packaged by brackets '[ ]' from the table which contains more than one columns like .e.g (2) or (3);
+>> What should be noticed is that __the 'in table' statement only work for data of single column__, so the selected or existed table must have only one column, or you can declare one column through declaring the column name after the table name packaged by brackets '[ ]' from the table which contains more than one columns like .e.g (2) or (3);
 >>
 >> If you use 'select' statement in 'in table' statement, the brackets '( )' and the table alias are mandatory;
 >>
@@ -262,11 +262,11 @@ ____
 >>
 >       where AppleCount in [1,2,3]
 >
->>[ ] means an array, elements in this array should be separated by ',';
+>>For liederDB, '[ ]' means an array, elements in this array should be separated by ',';
 >>
->>'in[ ]' returns whether the left_element appered in the right array;
+>>The 'in [ ]' statement returns whether the left_element appered in the right array;
 >>
->>This statement works like 'like' statement shown below, about more please see the 'like' statement.
+>>The function of this statement is covered by 'like' statement shown below actually, about more please see the 'like' statement.
 
 ### like
 >#### SINGLE_ELEMENT statement
@@ -274,26 +274,26 @@ ____
 >
 >* signs of like_expression
 >>
->> _'___' represents an arbitrary character_;
+>> _'___' represents arbitrary a character_;
 >>
->> '%' represents any number(including 0) of arbitrary characters;
+>> '%' represents any number (including 0) of arbitrary characters;
 >* e.g.
 >>
 >       where AppleName like 'R&%d %j'
 >
 >>Of course, 'Red Fuji' meet this expression.
->#### [ ] ( / [^ ]) statement
->__left_element like [like_expression_1, like_expression_2, ...]/[^like_expression_1, like_expression_2, ...]__
+>#### [ ] ( / ![ ]) statement
+>__left_element like [like_expression_1, like_expression_2, ...] / ![like_expression_1, like_expression_2, ...]__
 >
 >* e.g.
 >>
 >       where AppleName like [R%d %j, Re% F%i]
 >
->>[ ] ( or [^ ] ) means an array, contain some like_expressions;
+>>[ ] ( or ![ ] ) means an array, contain some like_expressions;
 >>
 >>'[ ]' statement in 'like' statement returns whether the left_element meet any like_expression in the [ ] array;
 >>
->>'[^ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [ ] array;
+>>'![ ]' statement in 'like' statement will return true if the left_element not meet any like_expression in the [ ] array;
 
 ----
 
@@ -359,9 +359,9 @@ __select <ELEMENT_FUNCTION(* / COLUMN_NAME)> from TABLE_NAME__
 >
     select <AppleName, first(AppleColor)> from Apple where AppleCount > 2;
 
->The 'ELEMENT_FUNCTION' are functions with only one result, and will write the result into every cell of corresponding column.
+>The 'ELEMENT_FUNCTION' are functions with only one result, and will fill the result into every cell of corresponding column.
 >
->>The 'count' function calculates the row count of the column named 'COLUMN_NAME' from the result table.
+>>The 'count' function return the selected row count of the column named 'COLUMN_NAME' from the result table.
 >
 >>The 'sum' function sums the numerial value of the column named 'COLUMN_NAME' from the result table.
 >
@@ -378,21 +378,21 @@ __select <ELEMENT_FUNCTION(* / COLUMN_NAME)> from TABLE_NAME__
 
 ### runMode
 __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
->Three main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
+>Four main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
 >
 >The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
 >
->The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM), but if it don't have enough memory to save all tables, kernel will transfer some tables into hard disk. Of course, if you need those tables transferred in the hard disk again, the 'runMode' may spend more time than the 'hardSpeed' one. But this only occurs when memory (RAM) is not enough for your data, other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The upgrade version of the 'balance' can refer to the 'smoothBalance'.
+>The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM) at first, but if it don't have enough memory to save all tables, kernel will transfer all tables into hard disk, and if you need read or write some data of some tables again, those tables would be moved to RAM one by one again. So the 'runMode' may spend more time than the 'hardSpeed' one, but this only occurs when memory (RAM) is not enough for your data. Other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The other version of the 'balance' can refer to the 'smoothBalance'.
 >
->The 'smoothBalance' is similar to the 'balance' one, the difference is the way to handle memory warning. That is when it don't have enough memory to save all tables, kernel will transfer some tables into hard disk one by one until move out enough space to run. So the 'smoothBalance' kept fast in case of security greatly. So the 'balance' is recommended most.
+>The 'smoothBalance' is similar to the 'balance' one, the difference is the way to handle memory warning. That is when memory don't have enough memory to put all tables, kernel will transfer tables into hard disk one by one without all tables one-off until move out enough space to work. So the 'smoothBalance' kept fast in case of security greatly.
 >
 >The 'memorySave' means all data would be saved on the hard disk after every operation, so this 'runMode' means the slowest speed and the minimum memory storage (although it won't be particularly slow, but it means more times hard disk reads and writes, it depends on the hard disk read and write speed of your hardware).
 
 ### efficientMode
 __setup efficientMode true__ / __setup efficientMode false__ (detault)
->The 'efficientMode' used in high-density instruction situations makes kernel try to store data of tables with another thread without main thread. 
+>The 'efficientMode' used in high-density instruction situations makes kernel try to store data of tables with another thread rather than main thread. 
 >
->But what should be awared is that more threads work means more thread overhead, there may not be so particularly desirable performance when the amount of data in a single table is not very huge (such as lease than 1 billion bytes). Of course, due to the binary storage, you can get a very quick storage performance without turning on the 'efficientMode' also.
+>But what should be awared is that more threads work means more thread overhead, there may not be so particularly desirable performance when the amount of data in a single table is not very huge (such as less than 1 billion bytes). Of course, by binary storage, you can get a very quick storage performance without turning on the 'efficientMode' also.
 >
 >The 'efficientMode' need more memory space, and if memory space is not enough for 'efficientMode', 'efficientMode' while turn off automatically until memory space back to normal.
 >
@@ -402,9 +402,9 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath TABLES_SAVE_FOLDER_PATH move__
 >The 'savePath' used when you want to set or change the folder path tables saved on hard disk.
 >
->The 'TABLES_SAVE_FOLDER_PATH' is the path of folder, it could be any file path.
+>The 'TABLES_SAVE_FOLDER_PATH' is a path of the folder where you want to put tables.
 >
->The 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you change the folder path, data in old folder will copy to the new one, of course, 'move' means moving to the new one (delete from the old one).
+>The 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you change the folder path, data in old folder will copy to the new one, of course, 'move' means move to the new one (delete from the old one).
 
 ____
 ## More questions and suggestions
