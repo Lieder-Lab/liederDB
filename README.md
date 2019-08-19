@@ -7,14 +7,14 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 ### Grammar regulation:
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
 * There should be a ';' between every two commends to separate them;
-* Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__ before 'where' statement, same as <column_name1, column_name2>, <column_value1, column_value2>;
-* You can choose whether string type element in angle brackets <> should be enclosed in quotation marks ('' or "") or not. __If you choose not, kernel will remove all spaces in the element, so if you want to keep them, you should package whole elements into quotation marks ('' or "")__;
-* Quotation marks '' and "" are same for liederDB;
-* The brackets () only indicate function parameter or a whole table expression (there must be a table alias behind the table expression, like this: (TABLE_CREATE_EXPRESSION) TABLE_ALIAS) (reference MySQL).
+* Elements to be assigned and corresponding column names should packaged into __separated key-value pair and enclosed in angle brackets <>__ before 'where' statement('WHERE_STATEMENT'), same as <column_name1, column_name2>, <column_value1, column_value2>;
+* You can choose whether string type element in angle brackets <> should be enclosed in quotation marks (' or ") or not. __If you choose not, kernel will remove all spaces in the element, so if you want to keep them, you should package whole elements in quotation marks ('' or "")__;
+* Quotation marks ' and " are same for liederDB;
+* The brackets () only used for function parameter, nesting or a whole 'table' statement('TABLE_STATEMENT') (there must be a table alias behind the 'table' statement, like this: (TABLE_CREATE_STATEMENT) TABLE_ALIAS) (reference to MySQL).
 * Keywords are not case sensitive;
 * All elements save as String in kernel, so default element type is String.
-* Using brackets () to declare right order is recommended in where statement especially when you are due to the order the commend works.
-* The escape character for liederDB is slash '\\', only works for quotation marks '' and "" in <> pair until now.
+* Using brackets () to declare right order is recommended in 'where' statement especially when you rearrange the order the commend works.
+* The escape character for liederDB is slash '/', only works for quotation marks ' and " now.
 * __No nesting allowed in <> pair.__
 
 ____
@@ -88,7 +88,7 @@ __update TABLE_NAME set <COLUMNS_NAMES> = <COLUMNS_VALUES> [where statement];__
 
 >Now you updated the AppleColor value where AppleCount = 3 and AppleName = Red Fuji;
 >
->The 'where statement' is not mandatory, specifies the constraints of the preceding statement. More about rules about 'where statement', please see the following chapter for details.
+>The 'where' statement is not mandatory, specifies the constraints of the preceding statement. More details for 'where' statement, please see the following chapter.
 
 ### some operation marks: ++ / -- / += / -=
 
@@ -127,7 +127,7 @@ __delete TABLE_NAME [from [first__(default), __last] start_ROW_INDEX] [to  [firs
 >
     delete Apple from last 2;
 
->Delete statement just means remove data of some rows from exsited table, or clear whole table, not remove whole table (remove whole table see remove statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
+>The 'delete' statement just means remove the data of some rows from exsited table, or clear whole table, not remove whole table (remove whole table see 'remove' statement). For the unity of grammar, it writied as 'delete TABLE_NAME' instead of 'delete from TABLE_NAME';
 >
 >Now you removed the row where AppleCount = 3 and AppleName = Red Fuji or removed some rows in 'at substatement';
 >
@@ -166,7 +166,7 @@ __select [distinct__ (default) __/ all] <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from 
 
 >Now you got data of Apple as you want to;
 >
->The 'where statement' is not mandatory.
+>The 'where' statement is not mandatory.
 >
 >The [distinct (default) / all] is optional, absence or 'distinct' means this SELECT_STATEMENT just returns distinct result, 'all' means returns all result.
 ____
@@ -180,7 +180,7 @@ ____
 >>
 >       where __AppleCount = 1 and AppleColor = red__ and/or ...
 >
->>'and' sub statement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
+>>The 'and' substatement returns the result meet __CONDITIONS_1 and CONDITIONS_2__ simultaneously;
 >
 >#### __or__
 >__CONDITIONS_1 or CONDITIONS_2__
@@ -189,9 +189,9 @@ ____
 >>
 >       where __AppleCount = 1 or AppleColor = red__ and/or ...
 >
->>'or' sub statement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
+>>The 'or' substatement returns the result meet __CONDITIONS_1 or CONDITIONS_2__;
 >
->_The 'and' sub statement and 'or' sub statement are on the same grammatical levels in where statement, but 'and' sub statement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
+>_The 'and' substatement and 'or' substatement are on the same grammatical levels in 'where' statement, but 'and' substatement has a higher priority than 'or''s. Kernel would  process all 'and' statements first and then process the 'or's later, if commend designed not follow this order, please use brackets () to declare the right order, as we recommend already._
 
 ### LOGICAL_OPERATORS:  =    ==    >    <    >=    <=    !=
 
@@ -247,13 +247,14 @@ ____
 >>
 >       where AppleCount in CountList[count]
 >
->> TABLE statement means there must be a selected or exsited table follow behind 'in';
+>> The 'table' statement behind 'in' called 'in table' statement only used for selected or exsited table;
 >>
->> What should be noticed is __this statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column from the table which contains more than one columns through declaring the column name after table name and packaged by brackets '[ ]' like (2) or (3);
+>> What should be noticed is that __the 'in table' statement only work for data of single column__, so the selected or exsited table must have only one column, or you can declare one column through declaring the column name after the table name packaged by brackets '[ ]' from the table which contains more than one columns like .e.g (2) or (3);
 >>
->> If use 'select' statement in TABLE statement, brackets '( )' and table alias are mandatory;
+>> If you use 'select' statement in 'in table' statement, the brackets '( )' and the table alias are mandatory;
 >>
->> TABLE statement returns whether the left element appered in the column of the table.
+>> The 'in table' statement returns whether the left element appered in the column of the table.
+>
 >#### [ ] statement
 >__left_element in [element_1, element_2, element_3,  ...]__
 >
