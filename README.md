@@ -20,7 +20,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 ____
 ## Create a new table with initializing columns:
 
-__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>];__
+__create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUMNS_defaultValues>] [comment <COLUMNS_COMMENTS>];__
 
 * e.g.
 >
@@ -30,9 +30,9 @@ __create TABLE_NAME set <COLUMNS_NAMES>__ [type <COLUMNS_TYPES>] [default <COLUM
 
 * e.g.
 >
-    create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, "">;
+    create Apple set <AppleName, AppleCount, AppleColor> type <string, int, string> defaultValue <'', 0, ""> comment <'apple name', 'apple count', 'apple color'>;
 
->You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type string, int ,string and with default values '', 0 and ''.
+>You have created a table named Apple which has 3 columns named separately AppleName, AppleCount and AppleColor with type <string, int ,string> and with default values <'', 0, ''> and comments <'apple name', 'apple count', 'apple color'>.
 
 or
 
