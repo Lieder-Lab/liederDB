@@ -170,6 +170,50 @@ __select [distinct__ (default) __/ all] <COLUMNS_NAMES_1, COLUMNS_NAMES_2> from 
 >
 >The [distinct (default) / all] is optional, absence or 'distinct' means this SELECT_STATEMENT just returns distinct result, 'all' means returns all result.
 ____
+
+## Adjust some property of table:
+
+### Change Table Name
+
+>__adjust TABLE_NAME change table set name = TABLE_NEW_NAME__
+>
+>* e.g.
+>>
+>       adjust Apple change table set name = 'NewApple';
+>
+>Now you changed the name of table 'Apple' as 'NewApple'.
+
+### Add New Column
+
+>__adjust TABLE_NAME add column set name = COLUMN_NEW_NAME [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT]__
+>
+>* e.g.
+>>
+>       adjust Apple add column set name = 'AppleSource', type = 'string', comment = 'Source of apple.', default = 'China';
+>
+>Now you added a new column named 'AppleSource', default value is 'China', type is 'string' and comment is 'Source of apple.'.
+
+### Change Column Structure
+
+>__adjust TABLE_NAME change column COLUMN_NAME set [name = COLUMN_NEW_NAME] [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT]__
+>
+>* e.g.
+>>
+>       adjust Apple change column AppleCount set name = 'apple count', default = 'red', comment = 'All apples are red.';
+>
+>Now you reset the name, default value and comment of column named 'AppleCount' before.
+
+### Remove Existed Column
+
+>__adjust TABLE_NAME remove column COLUMN_NAME__
+>
+>* e.g.
+>>
+>       adjust Apple remove column AppleCount;
+>
+>Now you removed the column named 'AppleCount'.
+
+____
 ## Where statement:
 ### and / or
 
