@@ -173,15 +173,15 @@ ____
 
 ## Adjust some property of table:
 
-### Change Table Name
+### Update Table Name
 
->__adjust TABLE_NAME change table set name = TABLE_NEW_NAME__
+>__adjust TABLE_NAME update table set name = TABLE_NEW_NAME__
 >
 >* e.g.
 >>
->       adjust Apple change table set name = 'NewApple';
+>       adjust Apple update table set name = 'NewApple';
 >
->Now you changed the name of table 'Apple' as 'NewApple'.
+>Now you updated the name of table 'Apple' as 'NewApple'.
 
 ### Add New Column
 
@@ -193,15 +193,21 @@ ____
 >
 >Now you added a new column named 'AppleSource', default value is 'China', type is 'string' and comment is 'Source of apple.'.
 
-### Change Column Structure
+### Update Column Structure
 
->__adjust TABLE_NAME change column COLUMN_NAME set [name = COLUMN_NEW_NAME] [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT]__
+>__adjust TABLE_NAME update column COLUMN_NAME set [name = COLUMN_NEW_NAME] [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT] [,position = COLUMN_NEW_INDEX / position before REFERENCE_COLUMN_NAME / position after REFERENCE_COLUMN_NAME]__
+>
+>__adjust TABLE_NAME update column index COLUMN_INDEX set [name = COLUMN_NEW_NAME] [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT] [,position = COLUMN_NEW_INDEX / position before REFERENCE_COLUMN_NAME / position after REFERENCE_COLUMN_NAME]__
 >
 >* e.g.
 >>
->       adjust Apple change column AppleCount set name = 'apple count', default = 'red', comment = 'All apples are red.';
+>       adjust Apple update column AppleCount set name = 'apple count', default = 'red', comment = 'All apples are red.', position after AppleName;
+>>
+>       adjust Apple update column index 3 set name = 'apple count', default = 'red', comment = 'All apples are red.', position = 2;
 >
->Now you reset the name, default value and comment of column named 'AppleCount' before.
+>Now you reset the name, default value, comment and position of the column named 'AppleCount' before.
+>
+>The 'COLUMN_INDEX' and 'COLUMN_NEW_INDEX' should be an integer, start from 1 without 0.
 
 ### Remove Existed Column
 
