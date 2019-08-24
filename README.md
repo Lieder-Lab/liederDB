@@ -458,4 +458,4 @@ __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath T
 
 ____
 ## More questions and suggestions
-If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
+If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to hear from you.
