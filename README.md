@@ -16,6 +16,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Using brackets () to declare right order is recommended in 'where' statement especially when you rearrange the order the commend works.
 * The escape character for liederDB is slash '/', only works for quotation marks ' and " now.
 * __No nesting allowed in <> pair.__
+* For column name and table name, spaces at the start and the end would be trimmed off by kernel when you create table, adjust table name, insert new column, or adjust columns.
 
 ____
 ## Create a new table with initializing columns:
@@ -185,11 +186,11 @@ ____
 
 ### Add New Column
 
->__adjust TABLE_NAME add column set name = COLUMN_NEW_NAME [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT]__
+>__adjust TABLE_NAME add column set name = COLUMN_NEW_NAME [,type = COLUMN_NEW_TYPE] [,default = COLUMN_NEW_DEFAULT] [,comment = COLUMN_NEW_COMMENT] [,position = COLUMN_NEW_INDEX / position before REFERENCE_COLUMN_NAME / position after REFERENCE_COLUMN_NAME]__
 >
 >* e.g.
 >>
->       adjust Apple add column set name = 'AppleSource', type = 'string', comment = 'Source of apple.', default = 'China';
+>       adjust Apple add column set name = 'AppleSource', type = 'string', comment = 'Source of apple.', default = 'China'£¬ position after 'AppleName';
 >
 >Now you added a new column named 'AppleSource', default value is 'China', type is 'string' and comment is 'Source of apple.'.
 
@@ -213,11 +214,15 @@ ____
 
 >__adjust TABLE_NAME remove column COLUMN_NAME__
 >
+>__adjust TABLE_NAME remove column index COLUMN_INDEX__
+>
 >* e.g.
 >>
 >       adjust Apple remove column AppleCount;
+>>
+>       adjust Apple remove column index 3;
 >
->Now you removed the column named 'AppleCount'.
+>Now you removed the column named 'AppleCount' or index 3.
 
 ____
 ## Where statement:
