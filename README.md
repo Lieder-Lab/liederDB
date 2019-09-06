@@ -433,7 +433,7 @@ __select <ELEMENT_FUNCTION(* / COLUMN_NAME)> from TABLE_NAME__
 
 ### runMode
 __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
->Four main 'runMode's mean different balances between the speed and the memory cost of the kernel running.
+>Four main 'runMode's substatements mean different balances between the speed and the memory cost of the kernel running.
 >
 >The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
 >
@@ -445,7 +445,7 @@ __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smooth
 
 ### efficientMode
 __setup efficientMode true__ / __setup efficientMode false__ (detault)
->The 'efficientMode' used in high-density instruction situations makes kernel try to store data of tables with another thread rather than main thread. 
+>The 'efficientMode' substatement used in high-density instruction situations makes kernel try to store data of tables with another thread rather than main thread. 
 >
 >But what should be awared is that more threads work means more thread overhead, there may not be so particularly desirable performance when the amount of data in a single table is not very huge (such as less than 1 billion bytes). Of course, by binary storage, you can get a very quick storage performance without turning on the 'efficientMode' also.
 >
@@ -455,11 +455,12 @@ __setup efficientMode true__ / __setup efficientMode false__ (detault)
 
 ### savePath
 __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath TABLES_SAVE_FOLDER_PATH move__
->The 'savePath' used when you want to set or change the folder path tables saved on hard disk.
+>The 'savePath' substatement is used when you want to set or switch the path of folder where the tables stored on the hard disk.
 >
->The 'TABLES_SAVE_FOLDER_PATH' is a path of the folder where you want to put tables.
+>The 'TABLES_SAVE_FOLDER_PATH' is the path of folder where you want to store the tables.
 >
->The 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you change the folder path, data in old folder will copy to the new one, of course, 'move' means move to the new one (delete from the old one).
+>The keyword 'copy' behind 'TABLES_SAVE_FOLDER_PATH' means when you switch the folder path, data in old folder will copy to the new one;
+the 'move' means move to the new one (delete from the old one).
 
 ____
 ## More questions and suggestions
