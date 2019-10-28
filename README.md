@@ -431,11 +431,11 @@ __select <ELEMENT_FUNCTION(* / COLUMN_NAME)> from TABLE_NAME__
 
 ## Setup some features for kernel
 
-### runMode
+### runMode (only for non-virtual memory technology)
 __setup runMode hardSpeed__ / __setup runMode balance__ / __setup runMode smoothBalance__ (detault) / __setup runMode memorySave__
->Four main 'runMode's substatements mean different balances between the speed and the memory cost of the kernel running.
+>Four main 'runMode's substatements mean different balances between the speed and the memory cost of the kernel running for non-virtual memory technology.
 >
->The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear, this 'runMode' may cause some memory crashes. Unless you have enough memory for your data of tables, this 'runMode' would not be recommended most.
+>The 'hardSpeed' means the fastest speed. Every table would be stored on memory (RAM), so if you have too much data of tables more than the memory could bear for non-virtual memory technology, this 'runMode' may cause some memory crashes. So for non-virtual memory technology, unless you have enough memory for your data of tables, this 'runMode' would not be recommended most, for virtual memory technology, the 'hardSpeed' is the best choice for all.
 >
 >The 'balance' means a balance way of the kernel running. Every table would be stored in memory (RAM) at first, but if it don't have enough memory to save all tables, kernel will transfer all tables into hard disk, and if you need read or write some data of some tables again, those tables would be moved to RAM one by one again. So the 'runMode' may spend more time than the 'hardSpeed' one, but this only occurs when memory (RAM) is not enough for your data. Other than this, the 'balance' has almost as fast as the 'hardSpeed'. So the 'balance' is recommended most. The other version of the 'balance' can refer to the 'smoothBalance'.
 >
