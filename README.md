@@ -16,7 +16,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Using brackets () to declare right order is recommended in 'where' statement especially when you rearrange the order the commend works.
 * The escape character for liederDB is slash '/', only works for quotation marks ' and " now.
 * __No nesting allowed in <> pair.__
-* For column name and table name, spaces at the start and the end would be trimmed off by kernel when you create table, adjust table name, insert new column, or adjust columns.
+* The spaces at the start or the end of column name or table name would be trimmed off by kernel when you create table, adjust table name, insert new column, or adjust columns.
 
 ____
 ## Create a new table with initializing columns:
@@ -190,7 +190,7 @@ ____
 >
 >* e.g.
 >>
->       adjust Apple add column set name = 'AppleSource', type = 'string', comment = 'Source of apple.', default = 'China'£¬ position after 'AppleName';
+>       adjust Apple add column set name = 'AppleSource', type = 'string', comment = 'Source of apple.', default = 'China'Â£Â¬ position after 'AppleName';
 >
 >Now you added a new column named 'AppleSource', default value is 'China', type is 'string' and comment is 'Source of apple.'.
 
