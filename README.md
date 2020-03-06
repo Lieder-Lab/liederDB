@@ -1,8 +1,21 @@
-# liederDB
+﻿# liederDB
+
+
+>## News
+>
+>____
+>2020/3/6
+>>### __Now, You can Carry Your Data From MySql / Sql to Your Amazing LiederDB Just In Few Click!__
+>> Now, if you want to carry data from MySql or Sql database to your LiederDB, you just need:
+>>
+>> 1. Click button "show trans panel" in main panel of the "liederDB_testForm.exe" to display function panel;
+>> 2. Click radio button "MySql" or "Sql" to switch mode if you need;
+>> 3. Fill in corresponding parameters and click "trans" button.
+____
+
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
-
 
 ### Grammar regulation:
 * <ARRAY_NAME> means <1st, 2nd, 3rd, ...>;
@@ -463,5 +476,12 @@ __setup savePath TABLES_SAVE_FOLDER_PATH [copy]__ (default) / __setup savePath T
 the 'move' means move to the new one (delete from the old one).
 
 ____
+## Show something
+__show tables / show config__
+>The 'show tables' statement would sync all tables between memory and hard disk, and assemble a table with names of all tables.
+>
+>The 'show config' statement would assemble a table with all configs.
+
+___
 ## More questions and suggestions
 If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
