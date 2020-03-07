@@ -22,8 +22,6 @@ ____
 >> 3. Fill in corresponding parameters and click "trans" button.
 ____
 
-># Guide
-
 A new relational database improved from MySQL.
 
 Optimized MySQL, support middle layer storage modul, faster and more optimized operation.
