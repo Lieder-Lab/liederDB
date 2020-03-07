@@ -1,7 +1,7 @@
 ﻿# liederDB
 
 
->## News
+># News
 >
 >____
 >2020/3/7
@@ -9,7 +9,7 @@
 >> Now, you can transfrom Sql or MySql statement to LiederDB statement:
 >>
 >> 1. Click button "statement trans" in main panel of the "liederDB_testForm.exe" to display function panel;
->> 2. Input your MySql or Sql statement into 'input' textbox, click 'trans sql to liederDB';
+>> 2. Input your MySql or Sql statement into 'input' textbox, click 'trans sql to liederDB'.
 >>
 >> #_# What should to be aware of is that only 'select', 'insert' and 'update' statements of MySql / Sql is supported now, more features are under development.
 ____
@@ -21,6 +21,8 @@ ____
 >> 2. Click radio button "MySql" or "Sql" to switch mode if you need;
 >> 3. Fill in corresponding parameters and click "trans" button.
 ____
+
+># Guide
 
 A new relational database improved from MySQL.
 
