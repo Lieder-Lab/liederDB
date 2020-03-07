@@ -4,8 +4,17 @@
 >## News
 >
 >____
+>2020/3/7
+>>### __Now, You Can Satrt Transforming MySql / SQL Statement To LiederDB Statement In Just In Few Click!__
+>> Now, you can transfrom Sql or MySql statement to LiederDB statement:
+>>
+>> 1. Click button "statement trans" in main panel of the "liederDB_testForm.exe" to display function panel;
+>> 2. Input your MySql or Sql statement into 'input' textbox, click 'trans sql to liederDB';
+>>
+>> #_# What should to be aware of is that only 'select', 'insert' and 'update' statements of MySql / Sql is supported now, more features are under development.
+____
 >2020/3/6
->>### __Now, You can Carry Your Data From MySql / Sql to Your Amazing LiederDB Just In Few Click!__
+>>### __Now, You Can Carry Your Data From MySql / Sql To Your Amazing LiederDB Just In Few Click!__
 >> Now, if you want to carry data from MySql or Sql database to your LiederDB, you just need:
 >>
 >> 1. Click button "show trans panel" in main panel of the "liederDB_testForm.exe" to display function panel;
