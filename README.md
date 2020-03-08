@@ -11,7 +11,7 @@
 >> 1. Click button "statement trans" in main panel of the "liederDB_testForm.exe" to display function panel;
 >> 2. Input your MySql or Sql statement into 'input' textbox, click 'trans sql to liederDB'.
 >>
->> #_# What should to be aware of is that only 'select', 'insert' and 'update' statements of MySql / Sql is supported now, more features are under development.
+>> #_# What should to be aware of is that only 'select', 'insert', 'update' and 'delete' statements of MySql / Sql is supported now, more features are under development.
 ____
 >2020/3/6
 >>### __Now, You Can Carry Your Data From MySql / Sql To Your Amazing LiederDB Just In Few Click!__
@@ -36,7 +36,7 @@ Optimized MySQL, support middle layer storage modul, faster and more optimized o
 * Keywords are not case sensitive;
 * All elements save as String in kernel, so default element type is String.
 * Using brackets () to declare right order is recommended in 'where' statement especially when you rearrange the order the commend works.
-* The escape character for liederDB is slash '/', only works for quotation marks ' and " now.
+* The escape character for liederDB is slash '\', only works for quotation marks `, 'and " now.
 * __No nesting allowed in <> pair.__
 * The spaces at the start or the end of column name or table name would be trimmed off by kernel when you create table, adjust table name, insert new column, or adjust columns.
 
@@ -134,7 +134,7 @@ __delete TABLE_NAME [where statement];__
 
 __delete TABLE_NAME at [first__(default), __last] ROW_INDEX / [ROW_INDEXES];__ 
 
-__delete TABLE_NAME [from [first__(default), __last] start_ROW_INDEX] [to  [first__(default), __last] end_ROW_INDEX]__ (start from 1)
+__delete TABLE_NAME [from [first__(default), __last] start_ROW_INDEX] [to  [first__(default), __last] end_ROW_INDEX]__ (index starts from 1)
 
 * e.g.
 >
