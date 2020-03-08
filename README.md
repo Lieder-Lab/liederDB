@@ -3,6 +3,10 @@
 
 ># News
 >
+>
+>2020/3/8
+>>### __Now we have more interesting features, you can explore them in the latest "liederDB_testForm.exe"!__
+>> And, happy Women's Day for all ladies!
 >____
 >2020/3/7
 >>### __Now, You Can Satrt Transforming MySql / SQL Statement To LiederDB Statement In Just In Few Click!__
