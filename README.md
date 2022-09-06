@@ -9,7 +9,7 @@
 >> And, happy Women's Day for all ladies!
 >____
 >2020/3/7
->>### __Now, You Can Satrt Transforming MySql / SQL Statement To LiederDB Statement In Just In Few Click!__
+>>### __Now, You Can Satrt Transforming MySql / SQL Statement To LiederDB Statement In Just A Few Click!__
 >> Now, you can transfrom Sql or MySql statement to LiederDB statement:
 >>
 >> 1. Click button "statement trans" in main panel of the "liederDB_testForm.exe" to display function panel;
