@@ -497,4 +497,4 @@ __show tables / show config__
 
 ___
 ## More questions and suggestions
-If you have more questions or some suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about this.
+If you have any questions or suggestions, please email to 357274178@qq.com. It's my pleasure to talk with you about them.
